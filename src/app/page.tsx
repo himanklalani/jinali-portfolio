@@ -342,14 +342,17 @@ export default function Home() {
                   </h5>
                   <div className="w-4 h-[1px] bg-black/20 mt-4" />
                 </div>,
-                <div key="p6" className="w-full h-full bg-[#EAE8E3] relative">
+                <div key="p9" className="w-full h-full bg-[#EAE8E3] relative">
                   <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none mix-blend-multiply" />
                 </div>,
-                <div key="cover-back" className="w-full h-full bg-[#111] p-6 flex flex-col items-center justify-center relative overflow-hidden">
+                <div key="inside-back" className="w-full h-full bg-[#EAE8E3] relative shadow-[-10px_0_20px_rgba(0,0,0,0.05)] border-l border-black/5">
+                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none mix-blend-multiply" />
+                </div>,
+                <div key="outside-back" className="w-full h-full bg-[#111] p-6 flex flex-col items-center justify-center relative overflow-hidden">
                    {/* eslint-disable-next-line @next/next/no-img-element */}
                    <img src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=400&auto=format&fit=crop" alt="Leather Texture" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" />
-                   <div className="absolute inset-0 bg-black/60" />
-                   <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center relative z-10 bg-black/40 backdrop-blur-sm">
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+                   <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center relative z-10 bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.5)]">
                      <span className="font-serif text-white/50 text-[10px]">JM</span>
                    </div>
                 </div>
