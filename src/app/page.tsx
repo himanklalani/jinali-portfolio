@@ -210,49 +210,49 @@ export default function Home() {
                       id: "1",
                       title: "Mirrors",
                       artist: "Justin Timberlake",
-                      coverImage: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=500&auto=format&fit=crop",
+                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/53/74/c9/5374c99e-cff1-61a6-ca0f-fa1219d050a0/886443854406.jpg/600x600bb.jpg",
                       songLink: "https://open.spotify.com/track/4rHZZAmHpZrA3iH5zx8frV?si=ufWiZGxVToiPyBNBp566VQ&utm_source=copy-link"
                     },
                     {
                       id: "2",
                       title: "You're Tho",
                       artist: "Karan Aujla",
-                      coverImage: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500&auto=format&fit=crop",
+                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/79/d2/01/79d201d2-e54d-5604-81fb-313f30db7219/198588533581.jpg/600x600bb.jpg",
                       songLink: "https://open.spotify.com/track/7E4EhLK8mG4ORi3QR52r2A?si=JiOhd0N2R56XgOPaBGrjmQ&utm_source=copy-link"
                     },
                     {
                       id: "3",
                       title: "She will be loved",
                       artist: "Maroon 5",
-                      coverImage: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500&auto=format&fit=crop",
+                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/3e/25/d03e255d-e205-0e66-20f6-01e251896c25/14UMGIM27076.rgb.jpg/600x600bb.jpg",
                       songLink: "https://open.spotify.com/track/7sapKrjDij2fpDVj0GxP66?si=CEFtp6UsRi-BEDseviCQWw&utm_source=copy-link"
                     },
                     {
                       id: "4",
                       title: "One Thing",
                       artist: "One Direction",
-                      coverImage: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=500&auto=format&fit=crop",
+                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c3/d4/76/c3d4765f-006e-c9ac-6b83-50ae04894eff/dj.dqbxwvpe.jpg/600x600bb.jpg",
                       songLink: "https://open.spotify.com/track/5G2c6FsfTzgYUzageCmfXY?si=XfcQgkU8Tsqq7I0vPb-xTw&utm_source=copy-link"
                     },
                     {
                       id: "5",
                       title: "Late Night Talking",
                       artist: "Harry Styles",
-                      coverImage: "https://images.unsplash.com/photo-1621252171954-20ce605fa61d?q=80&w=500&auto=format&fit=crop",
+                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2a/19/fb/2a19fb85-2f70-9e44-f2a9-82abe679b88e/886449990061.jpg/600x600bb.jpg",
                       songLink: "https://open.spotify.com/track/1qEmFfgcLObUfQm0j1W2CK?si=wc0wUEkyRgmu93KbyYWvog&utm_source=copy-link"
                     },
                     {
                       id: "6",
                       title: "Khat",
                       artist: "Navjot Ahuja",
-                      coverImage: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=500&auto=format&fit=crop",
+                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ea/01/29/ea012994-51e8-6883-e1e1-c71fdd51754f/5026854264479.jpg/600x600bb.jpg",
                       songLink: "https://open.spotify.com/track/3gixnmepHSsyAuho34rprN?si=2S90CknWR6OM9oNkKhb1Qg&utm_source=copy-link"
                     },
                     {
                       id: "7",
                       title: "Heart of Gold",
                       artist: "Shawn Mendes",
-                      coverImage: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=500&auto=format&fit=crop",
+                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/96/07/3b/96073b55-8e58-ef6e-6e81-2d751ac83ed8/24UMGIM83490.rgb.jpg/600x600bb.jpg",
                       songLink: "https://open.spotify.com/track/69YhwaZE5OTsijIt3Gp6P2?si=uFtnkc4rR9e1goG_8Ak44A&utm_source=copy-link"
                     }
                   ]}
