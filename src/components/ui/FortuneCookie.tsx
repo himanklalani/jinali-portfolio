@@ -56,7 +56,7 @@ export function FortuneCookie() {
       )}
       
       <AnimatePresence>
-        {frame >= 25 && (
+        {frame > 27 && (
           <motion.div
             initial={{ opacity: 0, clipPath: 'inset(0 50% 0 50%)' }}
             animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0%)' }}
