@@ -215,9 +215,9 @@ export default function Home() {
                     },
                     {
                       id: "2",
-                      title: "You're Tho",
+                      title: "You're U tho",
                       artist: "Karan Aujla",
-                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/79/d2/01/79d201d2-e54d-5604-81fb-313f30db7219/198588533581.jpg/600x600bb.jpg",
+                      coverImage: "https://i.scdn.co/image/ab67616d0000b27389e8f71cb6f3b6cc60944858",
                       songLink: "https://open.spotify.com/track/7E4EhLK8mG4ORi3QR52r2A?si=JiOhd0N2R56XgOPaBGrjmQ&utm_source=copy-link"
                     },
                     {
