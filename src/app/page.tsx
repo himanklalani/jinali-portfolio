@@ -135,7 +135,7 @@ export default function Home() {
               { title: "Noise x Anuv Jain", image: "/campaigns/thumb_10.jpg", link: "https://www.instagram.com/reel/C3Hk98ivmFL/", description: "View Campaign Details" },
               { title: "India vs Pakistan", image: "/campaigns/thumb_11.jpg", link: "https://www.instagram.com/p/C8CWHjVMl2w/", description: "View Campaign Details" },
               { title: "Coach x Aryaki Joon", image: "/campaigns/thumb_12.jpg", link: "https://www.instagram.com/reel/Cs6NRcjBUBA", description: "View Campaign Details" },
-              { title: "Dinner Party Pod", image: "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?q=80&w=600&auto=format&fit=crop", link: "https://www.youtube.com/@DinnerPartyPod", description: "View Campaign Details" },
+              { title: "Dinner Party Pod", image: "/campaigns/thumb_13.jpeg", link: "https://www.youtube.com/@DinnerPartyPod", description: "View Campaign Details" },
               { title: "Mars x Aashna Hegde", image: "/campaigns/thumb_14.jpg", link: "https://www.instagram.com/p/DNawzkpyB95/", description: "View Campaign Details" },
               { title: "Clinique x Aashna Hegde", image: "/campaigns/thumb_15.jpg", link: "https://www.instagram.com/p/DBnnQSpSX4i/", description: "View Campaign Details" },
               { title: "Zara x Armaan Malik", image: "/campaigns/thumb_16.jpg", link: "https://www.instagram.com/p/DDe9YhbyIgn/", description: "View Campaign Details" },
