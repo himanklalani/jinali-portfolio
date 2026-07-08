@@ -59,6 +59,7 @@ export function FluidNav() {
                     initial={{ transform: 'translateY(100%)', opacity: 0 }}
                     animate={{ transform: 'translateY(0%)', opacity: 1 }}
                     exit={{ transform: 'translateY(100%)', opacity: 0 }}
+                    whileTap={{ scale: 0.98 }}
                     transition={{
                       delay: i * 0.1,
                       duration: 0.7,

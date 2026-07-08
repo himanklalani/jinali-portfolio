@@ -57,7 +57,7 @@ export function MediaEmbedModal({ items }: { items: MenuItem[] }) {
             >
               <button 
                 onClick={() => setActiveMedia(null)}
-                className="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 backdrop-blur-xl rounded-full flex items-center justify-center text-white/80 border border-white/10 hover:bg-white/20 hover:text-white transition-all shadow-lg"
+                className="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 backdrop-blur-xl rounded-full flex items-center justify-center text-white/80 border border-white/10 hover:bg-white/20 hover:text-white transition-[background-color,color,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.97] shadow-lg"
               >
                 ✕
               </button>

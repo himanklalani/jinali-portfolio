@@ -77,9 +77,9 @@ export function TvShowCard({ className }: { className?: string }) {
           { show: "Hacks", lesson: "Reinvention" },
           { show: "Game of Thrones", lesson: "Peak-then-drop" },
         ].map((item, i) => (
-          <div key={i} className="group/lesson flex items-center justify-between border-b border-white/5 pb-2 text-sm transition-colors hover:border-white/20 cursor-default">
-            <span className="text-white/60 group-hover/lesson:text-white transition-colors">{item.show}</span>
-            <span className="font-mono text-xs text-white/30 uppercase tracking-wider group-hover/lesson:text-emerald-400/80 transition-colors">{item.lesson}</span>
+          <div key={i} className="group/lesson flex items-center justify-between border-b border-white/5 pb-2 text-sm transition-colors duration-200 ease-out hover:border-white/20 cursor-default">
+            <span className="text-white/60 group-hover/lesson:text-white transition-colors duration-200 ease-out">{item.show}</span>
+            <span className="font-mono text-xs text-white/30 uppercase tracking-wider group-hover/lesson:text-emerald-400/80 transition-colors duration-200 ease-out">{item.lesson}</span>
           </div>
         ))}
         <p className="mt-2 text-xs font-light text-white/40 italic text-balance">

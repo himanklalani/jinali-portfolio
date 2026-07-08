@@ -105,11 +105,10 @@ export function Preloader({ onComplete }: PreloaderProps) {
               <span className="text-4xl md:text-6xl text-white/40 tracking-normal ml-2">%</span>
             </div>
             
-            {/* Subtle loading bar */}
             <div className="mt-8 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
               <motion.div 
-                className="h-full bg-white"
-                animate={{ width: `${progress}%` }}
+                className="h-full bg-white origin-left"
+                animate={{ transform: `scaleX(${progress / 100})` }}
                 transition={{ duration: 0.1, ease: 'linear' }}
               />
             </div>
