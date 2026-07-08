@@ -211,49 +211,49 @@ export default function Home() {
                       title: "Mirrors",
                       artist: "Justin Timberlake",
                       coverImage: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=500&auto=format&fit=crop",
-                      songLink: "https://open.spotify.com/"
+                      songLink: "https://open.spotify.com/track/4mVOj4HhYp2oG5d0T64zU7"
                     },
                     {
                       id: "2",
                       title: "You're Tho",
                       artist: "Karan Aujla",
                       coverImage: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500&auto=format&fit=crop",
-                      songLink: "https://open.spotify.com/"
+                      songLink: "https://open.spotify.com/search/You're%20Tho%20Karan%20Aujla"
                     },
                     {
                       id: "3",
                       title: "She will be loved",
                       artist: "Maroon 5",
                       coverImage: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500&auto=format&fit=crop",
-                      songLink: "https://open.spotify.com/"
+                      songLink: "https://open.spotify.com/search/She%20will%20be%20loved%20Maroon%205"
                     },
                     {
                       id: "4",
                       title: "One Thing",
                       artist: "One Direction",
                       coverImage: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=500&auto=format&fit=crop",
-                      songLink: "https://open.spotify.com/"
+                      songLink: "https://open.spotify.com/search/One%20Thing%20One%20Direction"
                     },
                     {
                       id: "5",
                       title: "Late Night Talking",
                       artist: "Harry Styles",
                       coverImage: "https://images.unsplash.com/photo-1621252171954-20ce605fa61d?q=80&w=500&auto=format&fit=crop",
-                      songLink: "https://open.spotify.com/"
+                      songLink: "https://open.spotify.com/track/4PTG3Z6ehGkBFwjybzWkR8"
                     },
                     {
                       id: "6",
                       title: "Khat",
                       artist: "Navjot Ahuja",
                       coverImage: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=500&auto=format&fit=crop",
-                      songLink: "https://open.spotify.com/"
+                      songLink: "https://open.spotify.com/search/Khat%20Navjot%20Ahuja"
                     },
                     {
                       id: "7",
                       title: "Heart of Gold",
                       artist: "Shawn Mendes",
                       coverImage: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=500&auto=format&fit=crop",
-                      songLink: "https://open.spotify.com/"
+                      songLink: "https://open.spotify.com/search/Heart%20of%20Gold%20Shawn%20Mendes"
                     }
                   ]}
                 />

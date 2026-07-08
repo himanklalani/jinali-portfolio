@@ -16,7 +16,7 @@ export function FluidNav() {
 
   return (
     <>
-      <div className="fixed top-6 md:top-10 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center">
+      <div className="fixed top-6 md:top-10 left-1/2 -translate-x-1/2 z-[100] flex items-center justify-center">
         {/* Menu Pill Button (Always On) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -48,7 +48,7 @@ export function FluidNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-black/80 backdrop-blur-3xl"
+            className="fixed inset-0 z-[90] flex flex-col items-center justify-center bg-black/80 backdrop-blur-3xl"
           >
             <nav className="flex flex-col items-center gap-8 text-center">
               {links.map((link, i) => (
