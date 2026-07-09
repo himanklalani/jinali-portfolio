@@ -315,10 +315,7 @@ export default function Home() {
           <FadeUp delay={0.1} className="md:col-span-1 md:row-span-1 h-full min-w-0">
             <div className="h-full w-full flex items-center justify-center p-2 sm:p-4 md:p-8 bg-white/[0.02] border border-white/5 rounded-3xl shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
               <InteractiveBook pages={[
-                <div key="cover" className="w-full h-full bg-[#111] relative flex flex-col justify-between cursor-pointer group hover:bg-[#151515] transition-colors overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <Image src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=400&auto=format&fit=crop" alt="Leather Texture" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
+                <div key="cover" className="w-full h-full bg-[#111] relative flex flex-col justify-between cursor-pointer group hover:bg-[#151515] transition-colors overflow-hidden"><div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
                   <div className="relative z-10 border border-white/20 m-3 p-3 h-[calc(100%-24px)] flex flex-col justify-between text-center">
                     <span className="font-mono text-[8px] tracking-widest text-white/60 uppercase">Reading List</span>
                     <div className="py-4 border-y border-white/10 my-auto bg-black/20 backdrop-blur-sm">
@@ -331,55 +328,37 @@ export default function Home() {
                   <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none mix-blend-multiply" />
                   <span className="font-serif text-black/10 text-5xl italic font-light">JM</span>
                 </div>,
-                <div key="p2" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <Image src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" alt="Magic" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale mix-blend-luminosity" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                <div key="p2" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left"><div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                   <div className="relative z-10">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block">01 / J.K. Rowling</span>
                     <h5 className="font-serif text-sm text-white mb-1 leading-tight">Harry Potter<br/>& The Order of the Phoenix</h5>
                   </div>
                 </div>,
-                <div key="p3" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <Image src="https://images.unsplash.com/photo-1542840410-3092f99611a3?q=80&w=400&auto=format&fit=crop" alt="Sun" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
+                <div key="p3" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5"><div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Khalid Hosseini / 02</span>
                     <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">A Thousand<br/>Splendid Suns</h5>
                   </div>
                 </div>,
-                <div key="p4" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <Image src="https://images.unsplash.com/photo-1505635552518-3448ff116af3?q=80&w=400&auto=format&fit=crop" alt="Thriller" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-hard-light grayscale-[0.8]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+                <div key="p4" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left"><div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   <div className="relative z-10">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block">03 / Freida McFadden</span>
                     <h5 className="font-serif text-sm text-white mb-1 leading-tight">The Inmate</h5>
                   </div>
                 </div>,
-                <div key="p5" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <Image src="https://images.unsplash.com/photo-1518671644344-9343ee0f913e?q=80&w=400&auto=format&fit=crop" alt="Tehran" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
+                <div key="p5" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5"><div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Marjan Kamali / 04</span>
                     <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">The Stationery Shop<br/>of Tehran</h5>
                   </div>
                 </div>,
-                <div key="p6" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <Image src="https://images.unsplash.com/photo-1496053421526-728b7891ea6b?q=80&w=400&auto=format&fit=crop" alt="Prison" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-hard-light grayscale-[0.8]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+                <div key="p6" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left"><div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   <div className="relative z-10">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block">05 / Jeffrey Archer</span>
                     <h5 className="font-serif text-sm text-white mb-1 leading-tight">Prisoner of Birth</h5>
                   </div>
                 </div>,
-                <div key="p7" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <Image src="https://images.unsplash.com/photo-1518709766631-90aace71c667?q=80&w=400&auto=format&fit=crop" alt="Myth" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
+                <div key="p7" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5"><div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Rick Riordan / 06</span>
                     <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">Percy Jackson &<br/>The Titan's Curse</h5>
@@ -399,10 +378,7 @@ export default function Home() {
                 <div key="inside-back" className="w-full h-full bg-[#EAE8E3] relative shadow-[-10px_0_20px_rgba(0,0,0,0.05)] border-l border-black/5">
                   <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none mix-blend-multiply" />
                 </div>,
-                <div key="outside-back" className="w-full h-full bg-[#111] p-6 flex flex-col items-center justify-center relative overflow-hidden">
-                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                   <Image src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=400&auto=format&fit=crop" alt="Leather Texture" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+                <div key="outside-back" className="w-full h-full bg-[#111] p-6 flex flex-col items-center justify-center relative overflow-hidden"><div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
                    <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center relative z-10 bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.5)]">
                      <span className="font-serif text-white/50 text-[10px]">JM</span>
                    </div>
