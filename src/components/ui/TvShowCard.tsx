@@ -51,11 +51,11 @@ export function TvShowCard({ className }: { className?: string }) {
           src="/tv_mockup.avif" 
           alt="Retro TV" 
           fill
-          className="absolute inset-0 w-full h-full object-contain z-20 pointer-events-none drop-shadow-2xl"
+          className="absolute inset-0 w-full h-full object-contain z-10 pointer-events-none drop-shadow-2xl"
         />
 
         {/* Inner Screen Area */}
-        <div className="absolute top-[20%] bottom-[24%] left-[17%] right-[18%] overflow-hidden bg-black z-10 flex items-center justify-center rounded-[20px]">
+        <div className="absolute top-[18%] bottom-[22%] left-[15%] right-[15%] overflow-hidden bg-black/95 z-20 flex items-center justify-center rounded-[10%] shadow-[inset_0_0_20px_rgba(0,0,0,1)]">
           {/* Grain Background */}
           <motion.div
             animate={{ x: keyframesX, y: keyframesY }}
