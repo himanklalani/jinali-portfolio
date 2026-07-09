@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import { motion } from "motion/react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { SpotLight } from "@react-three/drei";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,38 @@ if (typeof window !== "undefined") {
   };
 }
 const METAL_NOISE = 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.5%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E")';
+
+function ResponsiveBeams({ spots, lightColor }: { spots: number[], lightColor?: string }) {
+  const { viewport } = useThree();
+  
+  return (
+    <>
+      {spots.map((pos, i) => {
+        // Map 0-100% directly to the 3D viewport bounds
+        const xPos = ((pos / 100) - 0.5) * viewport.width;
+        
+        // The Canvas starts exactly below the fixtures in the DOM, so top of Canvas (y=viewport.height/2) perfectly aligns
+        const yPos = viewport.height / 2;
+        
+        return (
+          <SpotLight
+            key={i}
+            distance={viewport.height * 2}
+            angle={0.25}
+            attenuation={viewport.height * 0.8}
+            anglePower={5}
+            color={`rgb(${lightColor})`}
+            position={[xPos, yPos, 0]}
+            volumetric
+            opacity={1}
+            radiusTop={0.1}
+            radiusBottom={viewport.width * 0.3}
+          />
+        );
+      })}
+    </>
+  );
+}
 type RoomProps = {
   backWall?: { tl: [number, number]; tr: [number, number]; br: [number, number]; bl: [number, number] };
   lightsOn?: boolean;
