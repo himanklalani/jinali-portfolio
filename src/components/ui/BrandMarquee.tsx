@@ -10,7 +10,7 @@ const brands: { name: string; src: string; needsBg?: boolean }[] = [
   { name: 'Nars', src: '/logo/NARS-Cosmetics-Logo-SVG.svg', needsBg: true },
   { name: 'Noise', src: '/logo/Noise.svg', needsBg: true },
   { name: 'Saint Laurent', src: '/logo/Saint-Laurent-Logo-1.svg', needsBg: true },
-  { name: 'Tira', src: '/logo/Tira_logo.webp' },
+  { name: 'Tira', src: '/logo/Tira_logo.webp', needsBg: true },
   { name: 'Amazon', src: '/logo/amazon.svg', needsBg: true },
   { name: 'Beco', src: '/logo/beco.jpeg' },
   { name: 'Caudalie', src: '/logo/caudalie-seeklogo-2.svg', needsBg: true },
