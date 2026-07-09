@@ -23,7 +23,7 @@ const brands: { name: string; src: string; needsBg?: boolean }[] = [
   { name: 'Myntra', src: '/logo/myntra.png' },
   { name: 'Nykaa', src: '/logo/nykaa-1.svg' },
   { name: 'OnePlus', src: '/logo/oneplus-2.svg' },
-  { name: 'Rayban Meta', src: '/logo/rayban meta.png' },
+  { name: 'Rayban Meta', src: '/logo/rayban meta.png', needsBg: true },
   { name: 'Skechers', src: '/logo/skechers-3.svg' },
 ];
 
@@ -54,7 +54,7 @@ export const BrandMarquee = () => {
         <div className="marquee-track">
           {[...brands, ...brands].map((brand, i) => (
             <div key={i} className="flex items-center justify-center flex-shrink-0 w-[15vw] min-w-[120px] md:min-w-[180px] px-8 cursor-default">
-              <div className={`relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center ${brand.needsBg ? 'bg-white/90 p-2 rounded-lg' : ''}`}>
+              <div className={`relative h-12 md:h-16 flex items-center justify-center transition-all ${brand.needsBg ? 'w-24 md:w-32 bg-white/90 px-4 py-2 rounded-xl' : 'w-12 md:w-16'}`}>
                 <Image 
                   src={brand.src} 
                   alt={brand.name} 
