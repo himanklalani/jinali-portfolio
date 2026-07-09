@@ -14,18 +14,8 @@ import { TvShowCard } from "@/components/ui/TvShowCard";
 import { InteractiveBook } from "@/components/ui/InteractiveBook";
 import { MusicCarousel } from "@/components/ui/MusicCarousel";
 import { FilmStrip } from "@/components/ui/FilmStrip";
-import { DepthCarousel } from "@/components/ui/DepthCarousel";
-import { StickyCard } from "@/components/ui/StickyCard";
 import { FortuneCookie } from "@/components/ui/FortuneCookie";
 import { Preloader } from "@/components/ui/Preloader";
-
-const caseStudySlides = [
-  { id: 1, image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1200&auto=format&fit=crop", title: "Strategic Vision" },
-  { id: 2, image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1200&auto=format&fit=crop", title: "Brand Architecture" },
-  { id: 3, image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop", title: "Cultural Insight" },
-  { id: 4, image: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop", title: "Audience Connection" },
-  { id: 5, image: "https://images.unsplash.com/photo-1621619856624-42fd193a0661?q=80&w=1200&auto=format&fit=crop", title: "Creative Execution" }
-];
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -102,6 +92,48 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section id="experience" className="relative z-10 mx-auto max-w-7xl px-4 py-16 md:py-24 md:px-12 lg:px-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 relative items-start">
+          {/* Left Column - Sticky Typography */}
+          <div className="md:col-span-5 md:sticky md:top-32">
+            <FadeUp>
+              <div className="mb-6 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-white/80 uppercase">
+                <ProTextType text="Trajectory" />
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <h2 className="font-serif text-5xl md:text-7xl mb-8 leading-tight pb-2">Work<br/>Experience.</h2>
+            </FadeUp>
+          </div>
+
+          {/* Right Column - Flowing Cards */}
+          <div className="md:col-span-7 flex flex-col gap-6">
+            {[
+              { company: "One Hand Clap", role: "Associate Brand Solutions Lead", period: "Jan 2026 to Present" },
+              { company: "REPRESENT", role: "Manager, Brand Solutions", period: "Nov 2023 to Dec 2025" },
+              { company: "Monk Entertainment", role: "Talent Manager", period: "Mar 2022 to Oct 2023" }
+            ].map((job, i) => (
+              <FadeUp key={i} delay={i * 0.1}>
+                <div className="group cursor-default">
+                  <DoubleBezel className="w-full transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-1 group-hover:scale-[1.02]" innerClassName="flex flex-col gap-6 !p-8 md:!p-10 transition-colors duration-700 group-hover:bg-[#0f0f0f]">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-6">
+                      <h3 className="font-serif text-3xl text-white">{job.company}</h3>
+                      <div className="inline-flex w-fit items-center justify-center rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/60">
+                        {job.period}
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xl text-white/80 font-light">{job.role}</p>
+                    </div>
+                  </DoubleBezel>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Infinite Menu Showcase */}
       <section id="work" className="relative z-10 w-full bg-[#050505] py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-12 lg:px-24 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -143,29 +175,6 @@ export default function Home() {
               { title: "Koffee With Karan", image: "/campaigns/thumb_18.jpg", link: "https://www.instagram.com/p/CihykNpvTrD/", description: "View Campaign Details" },
             ]} />
           </div>
-        </div>
-      </section>
-
-      {/* Selected Case Studies */}
-      <section className="relative z-10 mx-auto max-w-7xl px-4 py-16 md:py-24 md:px-12 lg:px-24">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <div className="max-w-xl">
-            <FadeUp>
-              <div className="mb-6 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-white/80 uppercase">
-                <ProTextType text="The Work" />
-              </div>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <h2 className="font-serif text-5xl md:text-7xl mb-6 pb-2">Selected Case Studies.</h2>
-            </FadeUp>
-          </div>
-        </div>
-
-        <div className="hidden md:block">
-          <DepthCarousel slides={caseStudySlides} />
-        </div>
-        <div className="block md:hidden">
-          <StickyCard cards={caseStudySlides} />
         </div>
       </section>
 
@@ -364,48 +373,6 @@ export default function Home() {
             <TvShowCard className="h-full" />
           </FadeUp>
 
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="relative z-10 mx-auto max-w-7xl px-4 py-16 md:py-24 md:px-12 lg:px-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 relative items-start">
-          {/* Left Column - Sticky Typography */}
-          <div className="md:col-span-5 md:sticky md:top-32">
-            <FadeUp>
-              <div className="mb-6 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-white/80 uppercase">
-                <ProTextType text="Trajectory" />
-              </div>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <h2 className="font-serif text-5xl md:text-7xl mb-8 leading-tight pb-2">Work<br/>Experience.</h2>
-            </FadeUp>
-          </div>
-
-          {/* Right Column - Flowing Cards */}
-          <div className="md:col-span-7 flex flex-col gap-6">
-            {[
-              { company: "One Hand Clap", role: "Associate Brand Solutions Lead", period: "Jan 2026 to Present" },
-              { company: "REPRESENT", role: "Manager, Brand Solutions", period: "Nov 2023 to Dec 2025" },
-              { company: "Monk Entertainment", role: "Talent Manager", period: "Mar 2022 to Oct 2023" }
-            ].map((job, i) => (
-              <FadeUp key={i} delay={i * 0.1}>
-                <div className="group cursor-default">
-                  <DoubleBezel className="w-full transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-1 group-hover:scale-[1.02]" innerClassName="flex flex-col gap-6 !p-8 md:!p-10 transition-colors duration-700 group-hover:bg-[#0f0f0f]">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-6">
-                      <h3 className="font-serif text-3xl text-white">{job.company}</h3>
-                      <div className="inline-flex w-fit items-center justify-center rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/60">
-                        {job.period}
-                      </div>
-                    </div>
-                    <div>
-                      <p className="text-xl text-white/80 font-light">{job.role}</p>
-                    </div>
-                  </DoubleBezel>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
         </div>
       </section>
 
