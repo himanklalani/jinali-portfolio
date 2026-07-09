@@ -215,7 +215,7 @@ function Room({
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{ 
-          zIndex: 5
+          zIndex: 20
         }}
       >
         {fixtureSpots.map((pos, i) => (
