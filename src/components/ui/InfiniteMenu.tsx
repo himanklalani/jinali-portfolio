@@ -75,8 +75,12 @@ void main() {
     float imageAspect = float(texSize.x) / float(texSize.y);
     float containerAspect = 1.0;
     
-    float scale = max(imageAspect / containerAspect, 
-                     containerAspect / imageAspect);
+    vec2 scale = vec2(1.0);
+    if (imageAspect > containerAspect) {
+        scale.x = containerAspect / imageAspect;
+    } else {
+        scale.y = imageAspect / containerAspect;
+    }
     
     vec2 st = vec2(vUvs.x, 1.0 - vUvs.y);
     st = (st - 0.5) * scale + 0.5;
@@ -752,7 +756,18 @@ class InfiniteGridMenu {
     this.updateProjectionMatrix();
   }
 
+  public paused = false;
+
+  public pause(): void { this.paused = true; }
+  public resume(): void {
+    if (this.paused) {
+      this.paused = false;
+      requestAnimationFrame(t => this.run(t));
+    }
+  }
+
   public run(time = 0): void {
+    if (this.paused) return;
     this._deltaTime = Math.min(32, time - this._time);
     this._time = time;
     this._deltaFrames = this._deltaTime / this.TARGET_FRAME_DURATION;
@@ -1107,6 +1122,20 @@ export const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0, o
       );
     }
 
+    // Pause the RAF loop when off-screen to save GPU
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!sketch) return;
+        if (entry.isIntersecting) {
+          sketch.resume();
+        } else {
+          sketch.pause();
+        }
+      },
+      { threshold: 0.05 }
+    );
+    if (canvas) observer.observe(canvas);
+
     const handleResize = () => {
       if (sketch) {
         sketch.resize();
@@ -1118,6 +1147,7 @@ export const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0, o
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      observer.disconnect();
     };
   }, [items, scale]);
 
