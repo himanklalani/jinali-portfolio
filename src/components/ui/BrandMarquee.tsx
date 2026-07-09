@@ -3,7 +3,29 @@
 import React from 'react';
 import Image from 'next/image';
 
-const brands: { name: string; src: string }[] = [];
+const brands: { name: string; src: string }[] = [
+  { name: 'Campus', src: '/logo/CAMPUS.png' },
+  { name: 'Clinique', src: '/logo/Clinique-Logo-SVG_004.svg' },
+  { name: 'Maybelline', src: '/logo/Maybelline-logo-3.svg' },
+  { name: 'Nars', src: '/logo/NARS-Cosmetics-Logo-SVG.svg' },
+  { name: 'Noise', src: '/logo/Noise.svg' },
+  { name: 'Saint Laurent', src: '/logo/Saint-Laurent-Logo-1.svg' },
+  { name: 'Tira', src: '/logo/Tira_logo.webp' },
+  { name: 'Amazon', src: '/logo/amazon.svg' },
+  { name: 'Beco', src: '/logo/beco.jpeg' },
+  { name: 'Caudalie', src: '/logo/caudalie-seeklogo-2.svg' },
+  { name: 'Crocs', src: '/logo/crocs-wordmark.svg' },
+  { name: 'Foxtale', src: '/logo/foxtale.png' },
+  { name: 'Instax', src: '/logo/instax.svg' },
+  { name: 'Kerastase', src: '/logo/kerastase.svg' },
+  { name: 'Kiehls', src: '/logo/kiehls-logo.svg' },
+  { name: 'Mercedes', src: '/logo/mercedes.svg' },
+  { name: 'Myntra', src: '/logo/myntra.png' },
+  { name: 'Nykaa', src: '/logo/nykaa-1.svg' },
+  { name: 'OnePlus', src: '/logo/oneplus-2.svg' },
+  { name: 'Rayban Meta', src: '/logo/rayban meta.png' },
+  { name: 'Skechers', src: '/logo/skechers-3.svg' },
+];
 
 export const BrandMarquee = () => {
   return (
