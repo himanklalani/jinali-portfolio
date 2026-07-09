@@ -32,7 +32,7 @@ export function FortuneCookie() {
         }
         return prev + 1;
       });
-    }, 40); // 25fps
+    }, 16); // ~60fps
   };
 
   return (
@@ -60,7 +60,7 @@ export function FortuneCookie() {
           <motion.div
             initial={{ opacity: 0, clipPath: 'inset(0 50% 0 50%)' }}
             animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0%)' }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 flex items-center justify-center pointer-events-none"
           >
             <div className="absolute top-[56%] left-[50%] -translate-x-1/2 -translate-y-1/2 rotate-[-6deg]">
