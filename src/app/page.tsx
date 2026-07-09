@@ -82,7 +82,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <VolumetricStudio className="!min-h-[100dvh]" spots={[28, 72]} fixtureSpots={[25, 75]} isReady={isLoaded}>
-        <div className="relative z-10 flex h-full flex-col px-4 md:px-12 lg:px-24 pointer-events-none pt-[50vh] md:pt-[25vh] lg:pt-[30vh]">
+        <div className="relative z-10 flex h-full flex-col px-4 md:px-12 lg:px-24 pointer-events-none pt-[35vh] md:pt-[25vh] lg:pt-[30vh]">
           <div className="mx-auto max-w-7xl w-full">
             <FadeUp isReady={isLoaded}>
               <div className="mb-6 inline-flex shimmer-border rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase">
