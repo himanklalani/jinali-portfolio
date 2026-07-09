@@ -24,22 +24,22 @@ function ResponsiveBeams({ spots, lightColor }: { spots: number[], lightColor?: 
         // Map 0-100% directly to the 3D viewport bounds
         const xPos = ((pos / 100) - 0.5) * viewport.width;
         
-        // The Canvas starts exactly below the fixtures in the DOM, so top of Canvas (y=viewport.height/2) perfectly aligns
+        // The Canvas starts exactly below the fixtures in the DOM, so top of Canvas perfectly aligns
         const yPos = viewport.height / 2;
         
         return (
           <SpotLight
             key={i}
-            distance={viewport.height * 2}
+            distance={viewport.height * 3}
             angle={0.25}
-            attenuation={viewport.height * 0.8}
-            anglePower={5}
+            attenuation={viewport.height * 1.5}
+            anglePower={4}
             color={`rgb(${lightColor})`}
             position={[xPos, yPos, 0]}
             volumetric
-            opacity={1}
+            opacity={3} // Boosted optical depth for extreme side-viewing angles
             radiusTop={0.1}
-            radiusBottom={viewport.width * 0.3}
+            radiusBottom={viewport.width * 0.4}
           />
         );
       })}
