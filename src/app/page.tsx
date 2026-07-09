@@ -16,6 +16,7 @@ import { MusicCarousel } from "@/components/ui/MusicCarousel";
 import { FilmStrip } from "@/components/ui/FilmStrip";
 import { FortuneCookie } from "@/components/ui/FortuneCookie";
 import { Preloader } from "@/components/ui/Preloader";
+import { BrandMarquee } from "@/components/ui/BrandMarquee";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -91,6 +92,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <BrandMarquee />
 
       {/* Experience Section */}
       <section id="experience" className="relative z-10 mx-auto max-w-7xl px-4 py-16 md:py-24 md:px-12 lg:px-24">
