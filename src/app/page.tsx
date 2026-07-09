@@ -19,6 +19,7 @@ import { MusicCarousel } from "@/components/ui/MusicCarousel";
 import { FortuneCookie } from "@/components/ui/FortuneCookie";
 import { Preloader } from "@/components/ui/Preloader";
 import { BrandMarquee } from "@/components/ui/BrandMarquee";
+import { ExpandableDrawers } from "@/components/ui/ExpandableDrawers";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -402,19 +403,7 @@ export default function Home() {
             <FadeUp>
               <h2 className="font-serif text-5xl mb-12 pb-2">What I Believe.</h2>
             </FadeUp>
-            <div className="space-y-12">
-              {[
-                { title: "Strategy first", desc: "Ideas without structure are just vibes. I plan everything backwards from the outcome." },
-                { title: "Cultural honesty", desc: "Forcing a brand into a trend it doesn't belong in is the fastest way to lose credibility." },
-                { title: "Creator respect", desc: "The best partnerships happen when brands give creators room to be themselves." },
-                { title: "Attention to detail", desc: "The small things, the tone of a brief, the timing of a post, are what separate good from great." }
-              ].map((belief, i) => (
-                <FadeUp key={i} delay={i * 0.1}>
-                  <h4 className="text-xl font-medium mb-3">{belief.title}</h4>
-                  <p className="text-white/60 font-light">{belief.desc}</p>
-                </FadeUp>
-              ))}
-            </div>
+            <ExpandableDrawers />
           </div>
 
           <div className="flex flex-col justify-center">
