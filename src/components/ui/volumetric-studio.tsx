@@ -16,30 +16,37 @@ if (typeof window !== "undefined") {
 const METAL_NOISE = 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.5%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E")';
 
 function ResponsiveBeams({ spots, lightColor }: { spots: number[], lightColor?: string }) {
-  const { viewport } = useThree();
+  const { viewport, size } = useThree();
   
   return (
     <>
       {spots.map((pos, i) => {
-        // Map 0-100% directly to the 3D viewport bounds
-        const xPos = ((pos / 100) - 0.5) * viewport.width;
+        // The angle the physical bulb is tilted at
+        const theta = (pos - 50) * 1.3;
+        // The bulb cylinder is 64px tall. When it tilts by theta, the bottom lens swings horizontally.
+        const pixelShift = 64 * Math.sin(theta * (Math.PI / 180));
+        // Convert the pixel shift into 3D units to offset the beam origin
+        const unitsPerPixel = viewport.width / size.width;
         
-        // The Canvas starts exactly below the fixtures in the DOM, so top of Canvas perfectly aligns
+        // Map 0-100% directly to the 3D viewport bounds, and add the swing offset
+        const xPos = ((pos / 100) - 0.5) * viewport.width + (pixelShift * unitsPerPixel);
+        
+        // The Canvas starts exactly below the fixtures in the DOM
         const yPos = viewport.height / 2;
         
         return (
           <SpotLight
             key={i}
-            distance={viewport.height * 3}
+            distance={viewport.height * 2}
             angle={0.25}
-            attenuation={viewport.height * 1.5}
-            anglePower={4}
+            attenuation={viewport.height * 0.8}
+            anglePower={5}
             color={`rgb(${lightColor})`}
             position={[xPos, yPos, 0]}
             volumetric
-            opacity={3} // Boosted optical depth for extreme side-viewing angles
+            opacity={1}
             radiusTop={0.1}
-            radiusBottom={viewport.width * 0.4}
+            radiusBottom={viewport.width * 0.3}
           />
         );
       })}
@@ -212,7 +219,7 @@ function Room({
         }}
       >
         {fixtureSpots.map((pos, i) => (
-          <div key={i} className="absolute flex flex-col items-center origin-top" style={{ left: `${pos}%`, top: '10%', transform: `translate(-50%, -4px) rotate(${(pos - 50) * 1.6}deg)` }}>
+          <div key={i} className="absolute flex flex-col items-center" style={{ left: `${pos}%`, top: '10%', transform: `translate(-50%, -4px)` }}>
             <div className="w-[14px] h-[34px] rounded-sm border border-zinc-900 shadow-[0_5px_10px_rgba(0,0,0,0.9),inset_0_0_4px_rgba(255,255,255,0.5)] relative overflow-hidden"
                  style={{ background: 'linear-gradient(to right, #666 0%, #ffffff 40%, #999 60%, #333 100%)' }}>
                <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] bg-zinc-900 rounded-full shadow-[inset_0_1px_1px_rgba(0,0,0,1)]" />
@@ -222,7 +229,8 @@ function Room({
                <div className="absolute bottom-[-8px] left-1/2 -translate-x-1/2 w-[18px] h-[18px] rounded-full border border-zinc-900 shadow-[0_4px_8px_rgba(0,0,0,1),inset_0_1px_2px_rgba(255,255,255,0.3)]"
                     style={{ background: 'radial-gradient(circle at top left, #777, #111)' }} />
             </div>
-            <div className="relative mt-[6px] w-[54px] h-[64px] flex justify-center perspective-near">
+            <div className="relative mt-[6px] w-[54px] h-[64px] flex justify-center perspective-near origin-top"
+                 style={{ transform: `rotate(${(pos - 50) * 1.3}deg)` }}>
               <div className="absolute inset-0 rounded-b-2xl rounded-t-sm border border-black shadow-[0_20px_30px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col justify-evenly"
                    style={{ background: 'linear-gradient(to right, #111 0%, #3a3a3a 30%, #555 50%, #2a2a2a 80%, #000 100%)' }}>
                  <div className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none" style={{ backgroundImage: METAL_NOISE }} />
