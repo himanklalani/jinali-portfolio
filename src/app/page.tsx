@@ -61,7 +61,7 @@ export default function Home() {
       <FluidNav />
 
       {/* Vertical Scroll Progress Bar & Avatar */}
-      <div className="fixed top-0 bottom-0 left-6 md:left-10 z-50 pointer-events-none w-0">
+      <div className="fixed top-0 bottom-0 left-7 md:left-10 z-50 pointer-events-none w-0">
         {/* Subtle Background Track */}
         <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
         
