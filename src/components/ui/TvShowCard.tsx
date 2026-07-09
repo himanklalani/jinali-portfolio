@@ -29,10 +29,10 @@ export function TvShowCard({ className }: { className?: string }) {
   const currentShow = shows[currentIndex]
 
   return (
-    <div className={cn("group relative flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-md overflow-hidden", className)}>
+    <div className={cn("group relative flex flex-col items-center gap-8 w-full max-w-xl mx-auto", className)}>
       
       {/* Header */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 w-full">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 border border-white/10">
           <Tv className="h-5 w-5 text-white/70" />
         </div>
@@ -44,18 +44,18 @@ export function TvShowCard({ className }: { className?: string }) {
 
       {/* The TV Screen Component */}
       <div 
-        className="relative w-full aspect-[4/3] cursor-pointer group/tv overflow-hidden rounded-xl border border-white/5 bg-[#0a0a0a]"
+        className="relative w-full max-w-[400px] aspect-[4/3] mx-auto cursor-pointer group/tv"
         onClick={handleNextShow}
       >
         <Image 
           src="/tv_mockup.avif" 
           alt="Retro TV" 
           fill
-          className="absolute inset-0 w-full h-full object-cover z-20 pointer-events-none drop-shadow-2xl opacity-90 mix-blend-screen"
+          className="absolute inset-0 w-full h-full object-contain z-20 pointer-events-none drop-shadow-2xl"
         />
 
         {/* Inner Screen Area */}
-        <div className="absolute inset-0 overflow-hidden bg-black z-10 flex items-center justify-center scale-95">
+        <div className="absolute top-[20%] bottom-[24%] left-[17%] right-[18%] overflow-hidden bg-black z-10 flex items-center justify-center rounded-[20px]">
           {/* Grain Background */}
           <motion.div
             animate={{ x: keyframesX, y: keyframesY }}
