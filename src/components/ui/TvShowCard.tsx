@@ -29,33 +29,21 @@ export function TvShowCard({ className }: { className?: string }) {
   const currentShow = shows[currentIndex]
 
   return (
-    <div className={cn("group relative flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-md overflow-hidden", className)}>
-      
-      {/* Header */}
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 border border-white/10">
-          <Tv className="h-5 w-5 text-white/70" />
-        </div>
-        <div>
-          <h3 className="font-serif text-xl md:text-2xl text-white leading-tight">Currently Watching</h3>
-          <p className="text-xs md:text-sm text-white/50">TV taught me everything about arcs.</p>
-        </div>
-      </div>
-
+    <div className={cn("group relative flex flex-col items-center justify-center w-full", className)}>
       {/* The TV Screen Component */}
       <div 
-        className="relative w-full aspect-[4/3] cursor-pointer group/tv overflow-hidden rounded-xl border border-white/5 bg-[#0a0a0a]"
+        className="relative w-full max-w-2xl aspect-[4/3] cursor-pointer group/tv overflow-hidden rounded-xl"
         onClick={handleNextShow}
       >
         <Image 
           src="/tv_mockup.avif" 
           alt="Retro TV" 
           fill
-          className="absolute inset-0 w-full h-full object-cover z-20 pointer-events-none drop-shadow-2xl opacity-90 mix-blend-screen"
+          className="absolute inset-0 w-full h-full object-cover z-20 pointer-events-none drop-shadow-2xl"
         />
 
         {/* Inner Screen Area */}
-        <div className="absolute inset-0 overflow-hidden bg-black z-10 flex items-center justify-center scale-95">
+        <div className="absolute top-[8%] bottom-[12%] left-[6%] right-[6%] overflow-hidden bg-black z-10 flex items-center justify-center rounded-[20px] md:rounded-[30px]">
           {/* Grain Background */}
           <motion.div
             animate={{ x: keyframesX, y: keyframesY }}
@@ -87,8 +75,8 @@ export function TvShowCard({ className }: { className?: string }) {
                 transition={{ duration: 0.4 }}
                 className="relative flex flex-col items-center justify-center"
               >
-                <span className="block text-[0.6rem] uppercase tracking-[0.3em] text-emerald-400/80 mb-2 font-mono">
-                  Input: HDMI 1
+                <span className="block text-[0.6rem] md:text-xs uppercase tracking-[0.3em] text-emerald-400/80 mb-2 font-mono">
+                  HDMI 1
                 </span>
                 <h4 className="font-serif text-3xl md:text-5xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]">
                   {currentShow.title}
@@ -101,36 +89,6 @@ export function TvShowCard({ className }: { className?: string }) {
           <div className="absolute inset-0 pointer-events-none bg-linear-to-tr from-white/0 via-white/5 to-white/10 z-10 rounded-xl" />
         </div>
       </div>
-
-      {/* Description / Lessons */}
-      <div className="mt-2 flex flex-col gap-3">
-        {shows.map((item, i) => (
-          <div 
-            key={i} 
-            className={cn(
-              "group/lesson flex items-center justify-between border-b border-white/5 pb-2 text-sm transition-all duration-300 ease-out cursor-default",
-              i === currentIndex ? "border-emerald-500/30" : "hover:border-white/20"
-            )}
-          >
-            <span className={cn(
-              "transition-colors duration-200 ease-out",
-              i === currentIndex ? "text-emerald-400 font-medium" : "text-white/60 group-hover/lesson:text-white"
-            )}>
-              {item.title}
-            </span>
-            <span className={cn(
-              "font-mono text-xs uppercase tracking-wider transition-colors duration-200 ease-out",
-              i === currentIndex ? "text-emerald-400/80 font-bold" : "text-white/30 group-hover/lesson:text-white/60"
-            )}>
-              {item.lesson}
-            </span>
-          </div>
-        ))}
-        <p className="mt-2 text-xs font-light text-white/40 italic text-balance text-center">
-          Tap the TV to change the channel.
-        </p>
-      </div>
-
     </div>
   )
 }
