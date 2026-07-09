@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useId } from "react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 const VINTAGE_FILTER = "sepia(0.65) contrast(1.15) brightness(0.9) saturate(0.6)"
@@ -55,8 +56,15 @@ function PerfRow({
 function Frame({ src, displayIndex, isVin, frameWidth, frameHeight, brandLabel }: any) {
   return (
     <div style={{ position: "relative", width: frameWidth, height: frameHeight, flexShrink: 0, overflow: "hidden" }}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: isVin ? VINTAGE_FILTER : "none", pointerEvents: "none" }} />
+      {/* Use Next.js optimized Image component */}
+      <Image 
+        src={src} 
+        alt="" 
+        fill
+        sizes="180px"
+        className="object-cover pointer-events-none"
+        style={{ filter: isVin ? VINTAGE_FILTER : "none", display: "block" }} 
+      />
       <div style={{ position: "absolute", inset: 0, background: VIGNETTE, opacity: isVin ? 1 : 0, pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: 4, right: 5, fontFamily: "'Courier New', monospace", fontSize: 10, color: isVin ? "rgba(200,160,70,0.75)" : "rgba(255,255,255,0.35)", pointerEvents: "none", letterSpacing: "0.1em" }}>
         {String(displayIndex + 1).padStart(2, "0")}A
