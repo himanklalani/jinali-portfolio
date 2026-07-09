@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, useTransform, useMotionValue } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -23,13 +23,25 @@ import { BrandMarquee } from "@/components/ui/BrandMarquee";
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   
-  // Sync logo position perfectly with Lenis smooth scroll engine
+  // Sync avatar position directly with Lenis scroll progress (pixel-based so useTransform interpolates correctly)
   const scrollYProgress = useMotionValue(0);
+  const [travelDistance, setTravelDistance] = useState(0);
+
+  useEffect(() => {
+    const avatarSize = 64; // h-16 = 64px
+    const topOffset = 32;  // md:top-8 = 32px
+    setTravelDistance(window.innerHeight - avatarSize - topOffset * 2);
+    const handleResize = () => setTravelDistance(window.innerHeight - avatarSize - topOffset * 2);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useLenis(({ progress }) => {
     scrollYProgress.set(progress);
   });
-  
-  const logoY = useTransform(scrollYProgress, [0, 1], ["0px", "calc(100dvh - 100px)"]);
+
+  // Plain number → plain number: Framer Motion interpolates correctly
+  const logoY = useTransform(scrollYProgress, [0, 1], [0, travelDistance]);
 
   return (
     <main className="relative min-h-[100dvh] w-full overflow-hidden bg-[#050505]">
@@ -59,9 +71,9 @@ export default function Home() {
           style={{ height: "100%", scaleY: scrollYProgress }}
         />
 
-        {/* Avatar Thumb */}
+        {/* Avatar Thumb — starts at top:32px, travels logoY pixels down */}
         <motion.div 
-          className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 pointer-events-auto"
+          className="absolute top-8 left-1/2 -translate-x-1/2 pointer-events-auto"
           style={{ y: logoY }}
         >
           <CharacterAvatar />
