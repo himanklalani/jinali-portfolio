@@ -60,7 +60,7 @@ export const BrandMarquee = () => {
                   alt={brand.name} 
                   fill
                   sizes="(max-width: 768px) 48px, 64px"
-                  className="object-contain opacity-40 brightness-0 invert transition-all duration-500 hover:opacity-100 hover:scale-110"
+                  className="object-contain opacity-80 transition-all duration-500 hover:opacity-100 hover:scale-110"
                 />
               </div>
             </div>
