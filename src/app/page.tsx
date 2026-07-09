@@ -51,7 +51,7 @@ export default function Home() {
       <div className="noise-overlay" />
 
       {/* Background Mesh Gradient (Ethereal Glass) - using radial-gradient for perf */}
-      <div className="pointer-events-none fixed inset-0 z-0 mix-blend-screen opacity-60" style={{
+      <div className="pointer-events-none fixed inset-0 z-0 opacity-60" style={{
         background: `
           radial-gradient(ellipse 60% 55% at 50% 50%, rgba(192, 38, 211, 0.22) 0%, transparent 70%),
           radial-gradient(ellipse 45% 40% at 70% 70%, rgba(16, 185, 129, 0.14) 0%, transparent 65%),

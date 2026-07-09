@@ -440,7 +440,10 @@ function makeVertexArray(
 }
 
 function resizeCanvasToDisplaySize(canvas: HTMLCanvasElement): boolean {
-  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  // Mobile browsers (often 3x DPR) struggle heavily with full-screen custom WebGL shaders
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const maxDpr = isMobile ? 1 : 2;
+  const dpr = Math.min(maxDpr, window.devicePixelRatio || 1);
   const displayWidth = Math.round(canvas.clientWidth * dpr);
   const displayHeight = Math.round(canvas.clientHeight * dpr);
   const needResize = canvas.width !== displayWidth || canvas.height !== displayHeight;
