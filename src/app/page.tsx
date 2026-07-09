@@ -43,13 +43,25 @@ export default function Home() {
 
       <FluidNav />
 
-      {/* Top Left Avatar Logo - Linked to Scroll */}
-      <motion.div 
-        className="fixed top-4 left-4 md:top-8 md:left-8 z-50 pointer-events-auto"
-        style={{ y: logoY }}
-      >
-        <CharacterAvatar />
-      </motion.div>
+      {/* Vertical Scroll Progress Bar & Avatar */}
+      <div className="fixed top-0 bottom-0 left-6 md:left-10 z-50 pointer-events-none w-0">
+        {/* Subtle Background Track */}
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+        
+        {/* Active Progress Fill */}
+        <motion.div 
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-emerald-500/0 via-emerald-500/50 to-emerald-400 origin-top"
+          style={{ height: "100%", scaleY: scrollYProgress }}
+        />
+
+        {/* Avatar Thumb */}
+        <motion.div 
+          className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 pointer-events-auto"
+          style={{ y: logoY }}
+        >
+          <CharacterAvatar />
+        </motion.div>
+      </div>
 
       {/* Hero Section */}
       <VolumetricStudio className="!min-h-[100dvh]" spots={[32, 68]} fixtureSpots={[32, 68]} isReady={isLoaded}>
