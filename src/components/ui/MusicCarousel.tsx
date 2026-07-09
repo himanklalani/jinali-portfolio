@@ -102,7 +102,7 @@ export function MusicCarousel({
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={0.2}
         onDragEnd={handleDragEnd}
-        className="relative flex items-center justify-center cursor-grab active:cursor-grabbing w-full h-[450px]"
+        className="relative flex items-center justify-center cursor-grab active:cursor-grabbing w-full h-[380px]"
       >
         {tracks.map((track, index) => {
           const pos = getCardPosition(index)

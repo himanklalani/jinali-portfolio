@@ -27,12 +27,14 @@ export default function Home() {
       {/* Global Noise Overlay */}
       <div className="noise-overlay" />
 
-      {/* Background Mesh Gradient (Ethereal Glass) */}
-      <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center opacity-60 mix-blend-screen">
-        <div className="absolute h-[800px] w-[800px] rounded-full bg-fuchsia-600/30 blur-[120px] animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute h-[600px] w-[600px] translate-x-1/3 translate-y-1/3 rounded-full bg-emerald-500/20 blur-[100px] animate-pulse" style={{ animationDuration: '12s' }} />
-        <div className="absolute h-[500px] w-[500px] -translate-x-1/3 -translate-y-1/3 rounded-full bg-cyan-500/20 blur-[120px] animate-pulse" style={{ animationDuration: '10s' }} />
-      </div>
+      {/* Background Mesh Gradient (Ethereal Glass) - using radial-gradient for perf */}
+      <div className="pointer-events-none fixed inset-0 z-0 mix-blend-screen opacity-60" style={{
+        background: `
+          radial-gradient(ellipse 60% 55% at 50% 50%, rgba(192, 38, 211, 0.22) 0%, transparent 70%),
+          radial-gradient(ellipse 45% 40% at 70% 70%, rgba(16, 185, 129, 0.14) 0%, transparent 65%),
+          radial-gradient(ellipse 40% 35% at 30% 25%, rgba(6, 182, 212, 0.14) 0%, transparent 65%)
+        `
+      }} />
 
       <FluidNav />
 
@@ -202,10 +204,10 @@ export default function Home() {
             <DoubleBezel className="h-full w-full" innerClassName="flex flex-col justify-between !p-6 sm:!p-10 overflow-hidden w-full">
               <div>
                 <h3 className="font-serif text-4xl mb-6">On Repeat.</h3>
-                <p className="text-xl font-light text-white/70 mb-8 max-w-xl text-balance">
+                <p className="text-xl font-light text-white/70 mb-6 max-w-xl text-balance">
                   Music is my second language. My playlist is just as scattered as my campaign decks, but it shapes how I think about timing and emotion. That's what great marketing runs on anyway.
                 </p>
-                <div className="flex flex-wrap gap-3 mb-10">
+                <div className="flex flex-wrap gap-3 mb-2">
                   {['Indie', 'Bollywood', 'Pop', 'Chillhop', 'Punjabi'].map(genre => (
                     <span key={genre} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
                       {genre}
@@ -213,7 +215,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <div className="w-full relative mt-8 flex justify-center scale-75 sm:scale-100 origin-top h-[350px] sm:h-auto overflow-visible">
+              <div className="w-full relative mt-2 flex justify-center scale-75 sm:scale-100 origin-top h-[350px] sm:h-auto overflow-visible">
                 <MusicCarousel 
                   cardWidth={260} 
                   className="w-full"
