@@ -115,31 +115,42 @@ export function TvShowCard({ className }: { className?: string }) {
       </div>
 
       {/* Description / Lessons */}
-      <div className="mt-2 flex flex-col gap-3">
-        {shows.map((item, i) => (
-          <div 
-            key={i} 
-            className={cn(
-              "group/lesson flex items-center justify-between border-b border-white/5 pb-2 text-sm transition-all duration-300 ease-out cursor-default",
-              i === currentIndex ? "border-emerald-500/30" : "hover:border-white/20"
-            )}
-          >
-            <span className={cn(
-              "transition-colors duration-200 ease-out",
-              i === currentIndex ? "text-emerald-400 font-medium" : "text-white/60 group-hover/lesson:text-white"
-            )}>
-              {item.title}
-            </span>
-            <span className={cn(
-              "font-mono text-xs uppercase tracking-wider transition-colors duration-200 ease-out",
-              i === currentIndex ? "text-emerald-400/80 font-bold" : "text-white/30 group-hover/lesson:text-white/60"
-            )}>
-              {item.lesson}
-            </span>
-          </div>
-        ))}
-        <p className="mt-2 text-xs font-light text-white/40 italic text-balance text-center">
-          Tap the TV to change the channel.
+      <div className="mt-8 flex flex-col w-full border-t border-white/10">
+        {shows.map((item, i) => {
+          const isActive = i === currentIndex;
+          return (
+            <button
+              key={i} 
+              onClick={() => setCurrentIndex(i)}
+              className={cn(
+                "group/lesson relative flex items-center justify-between border-b border-white/10 py-4 px-2 transition-all duration-300 ease-out text-left w-full overflow-hidden",
+                isActive ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
+              )}
+            >
+              {isActive && (
+                <motion.div
+                  layoutId="activeShow"
+                  className="absolute left-0 top-0 bottom-0 w-[2px] bg-white"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              <span className={cn(
+                "transition-all duration-300 ease-out font-serif text-lg pl-3",
+                isActive ? "text-white translate-x-1" : "text-white/40 group-hover/lesson:text-white/70"
+              )}>
+                {item.title}
+              </span>
+              <span className={cn(
+                "font-mono text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ease-out pr-2",
+                isActive ? "text-white/80" : "text-white/20 group-hover/lesson:text-white/40"
+              )}>
+                {item.lesson}
+              </span>
+            </button>
+          )
+        })}
+        <p className="mt-4 text-xs font-mono tracking-widest uppercase text-white/30 text-center opacity-70">
+          Select Channel
         </p>
       </div>
 
