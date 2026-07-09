@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const brands: { name: string; src: string; needsBg?: boolean }[] = [
-  { name: 'Campus', src: '/logo/CAMPUS.png' },
+  { name: 'Campus', src: '/logo/CAMPUS.png', needsBg: true },
   { name: 'Clinique', src: '/logo/Clinique-Logo-SVG_004.svg' },
   { name: 'Maybelline', src: '/logo/Maybelline-logo-3.svg' },
   { name: 'Nars', src: '/logo/NARS-Cosmetics-Logo-SVG.svg', needsBg: true },
@@ -15,9 +15,9 @@ const brands: { name: string; src: string; needsBg?: boolean }[] = [
   { name: 'Beco', src: '/logo/beco.jpeg' },
   { name: 'Caudalie', src: '/logo/caudalie-seeklogo-2.svg', needsBg: true },
   { name: 'Crocs', src: '/logo/crocs-wordmark.svg' },
-  { name: 'Foxtale', src: '/logo/foxtale.png' },
-  { name: 'Instax', src: '/logo/instax.svg' },
-  { name: 'Kerastase', src: '/logo/kerastase.svg' },
+  { name: 'Foxtale', src: '/logo/foxtale.png', needsBg: true },
+  { name: 'Instax', src: '/logo/instax.svg', needsBg: true },
+  { name: 'Kerastase', src: '/logo/kerastase.svg', needsBg: true },
   { name: 'Kiehls', src: '/logo/kiehls-logo.svg', needsBg: true },
   { name: 'Mercedes', src: '/logo/mercedes.svg' },
   { name: 'Myntra', src: '/logo/myntra.png' },
