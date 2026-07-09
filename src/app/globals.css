@@ -79,14 +79,15 @@
     animation: shimmer 4s linear infinite;
   }
 
-  /* Ethereal Noise / Film Grain */
+  /* Ethereal Noise / Film Grain (Optimized Static Image) */
   .noise-overlay {
     position: fixed;
-    inset: 0;
+    inset: -100%; /* oversize to allow subtle animation if needed later */
     z-index: 50;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    background-image: url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png");
+    background-size: 256px 256px;
+    opacity: 0.25;
     mix-blend-mode: overlay;
   }
 }

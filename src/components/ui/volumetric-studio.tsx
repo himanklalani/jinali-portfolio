@@ -14,7 +14,6 @@ if (typeof window !== "undefined") {
   };
 }
 const METAL_NOISE = 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.5%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E")';
-const GRAIN_NOISE = 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22g%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23g)%22/%3E%3C/svg%3E")';
 type RoomProps = {
   backWall?: { tl: [number, number]; tr: [number, number]; br: [number, number]; bl: [number, number] };
   lightsOn?: boolean;
@@ -160,37 +159,39 @@ function Room({
         className="absolute inset-0 pointer-events-none"
         style={{ zIndex: 16, mixBlendMode: "screen" }}
       >
-        {spots.map((pos, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: lightsOn ? intensity : 0 }}
-            transition={isFlickering ? { duration: 0 } : { delay: i * 0.1, duration: 0.8, ease: "easeInOut" }}
-            className="absolute flex w-[200px] h-[80vh] -translate-x-1/2 justify-center pointer-events-none"
-            style={{ 
-              left: `${pos}%`, 
-              top: "calc(10% + 80px)",
-              mixBlendMode: "screen",
-              willChange: "opacity"
-            }}
-          >
-            <Canvas camera={{ position: [0, 0, 10], fov: 45 }} shadows={false} gl={{ alpha: true }}>
-              <ambientLight intensity={0.5} />
-              <SpotLight
-                distance={12}
-                angle={0.25}
-                attenuation={6}
-                anglePower={5}
-                color={`rgb(${lightColor})`}
-                position={[0, 4.1, 0]}
-                volumetric
-                opacity={1}
-                radiusTop={0.1}
-                radiusBottom={4}
-              />
-            </Canvas>
-          </motion.div>
-        ))}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: lightsOn ? intensity : 0 }}
+          transition={isFlickering ? { duration: 0 } : { duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-[80vh] top-[calc(10%+80px)] pointer-events-none"
+          style={{ willChange: "opacity" }}
+        >
+          {/* Use a single unified WebGL context with a DPR cap for performance */}
+          <Canvas dpr={[1, 1.5]} frameloop="demand" camera={{ position: [0, 0, 10], fov: 45 }} shadows={false} gl={{ alpha: true }}>
+            <ambientLight intensity={0.5} />
+            {spots.map((pos, i) => {
+              // Map percentage position (0-100) to 3D world space (approx -4 to 4 depending on FOV/aspect)
+              // Assuming a typical aspect ratio, this math loosely places them horizontally
+              const xPos = ((pos / 100) - 0.5) * 8.5;
+              
+              return (
+                <SpotLight
+                  key={i}
+                  distance={12}
+                  angle={0.25}
+                  attenuation={6}
+                  anglePower={5}
+                  color={`rgb(${lightColor})`}
+                  position={[xPos, 4.1, 0]}
+                  volumetric
+                  opacity={1}
+                  radiusTop={0.1}
+                  radiusBottom={4}
+                />
+              );
+            })}
+          </Canvas>
+        </motion.div>
       </div>
       <div 
         className="absolute inset-0 pointer-events-none"
@@ -271,16 +272,6 @@ function Room({
           background: `radial-gradient(ellipse 90% 80% at 50% 45%,
             transparent 55%,
             rgba(0,0,0,${vignette}) 100%)`,
-        }}
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          zIndex: 25,
-          opacity: 0.04,
-          mixBlendMode: "screen",
-          backgroundImage: GRAIN_NOISE,
-          backgroundSize: "256px 256px",
         }}
       />
     </div>

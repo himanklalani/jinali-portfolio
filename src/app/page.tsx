@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, useTransform, useMotionValue } from 'motion/react';
 import { useLenis } from 'lenis/react';
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -317,7 +318,7 @@ export default function Home() {
               <InteractiveBook pages={[
                 <div key="cover" className="w-full h-full bg-[#111] relative flex flex-col justify-between cursor-pointer group hover:bg-[#151515] transition-colors overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=400&auto=format&fit=crop" alt="Leather Texture" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" />
+                  <Image src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=400&auto=format&fit=crop" alt="Leather Texture" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" />
                   <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
                   <div className="relative z-10 border border-white/20 m-3 p-3 h-[calc(100%-24px)] flex flex-col justify-between text-center">
                     <span className="font-mono text-[8px] tracking-widest text-white/60 uppercase">Reading List</span>
@@ -333,7 +334,7 @@ export default function Home() {
                 </div>,
                 <div key="p2" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" alt="Magic" className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale mix-blend-luminosity" />
+                  <Image src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" alt="Magic" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale mix-blend-luminosity" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                   <div className="relative z-10">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block">01 / J.K. Rowling</span>
@@ -342,7 +343,7 @@ export default function Home() {
                 </div>,
                 <div key="p3" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1542840410-3092f99611a3?q=80&w=400&auto=format&fit=crop" alt="Sun" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
+                  <Image src="https://images.unsplash.com/photo-1542840410-3092f99611a3?q=80&w=400&auto=format&fit=crop" alt="Sun" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
                   <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Khalid Hosseini / 02</span>
@@ -351,7 +352,7 @@ export default function Home() {
                 </div>,
                 <div key="p4" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1505635552518-3448ff116af3?q=80&w=400&auto=format&fit=crop" alt="Thriller" className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-hard-light grayscale-[0.8]" />
+                  <Image src="https://images.unsplash.com/photo-1505635552518-3448ff116af3?q=80&w=400&auto=format&fit=crop" alt="Thriller" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-hard-light grayscale-[0.8]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   <div className="relative z-10">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block">03 / Freida McFadden</span>
@@ -360,7 +361,7 @@ export default function Home() {
                 </div>,
                 <div key="p5" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1518671644344-9343ee0f913e?q=80&w=400&auto=format&fit=crop" alt="Tehran" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
+                  <Image src="https://images.unsplash.com/photo-1518671644344-9343ee0f913e?q=80&w=400&auto=format&fit=crop" alt="Tehran" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
                   <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Marjan Kamali / 04</span>
@@ -369,7 +370,7 @@ export default function Home() {
                 </div>,
                 <div key="p6" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1496053421526-728b7891ea6b?q=80&w=400&auto=format&fit=crop" alt="Prison" className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-hard-light grayscale-[0.8]" />
+                  <Image src="https://images.unsplash.com/photo-1496053421526-728b7891ea6b?q=80&w=400&auto=format&fit=crop" alt="Prison" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-hard-light grayscale-[0.8]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   <div className="relative z-10">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block">05 / Jeffrey Archer</span>
@@ -378,7 +379,7 @@ export default function Home() {
                 </div>,
                 <div key="p7" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="https://images.unsplash.com/photo-1518709766631-90aace71c667?q=80&w=400&auto=format&fit=crop" alt="Myth" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
+                  <Image src="https://images.unsplash.com/photo-1518709766631-90aace71c667?q=80&w=400&auto=format&fit=crop" alt="Myth" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay sepia-[.3]" />
                   <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Rick Riordan / 06</span>
@@ -401,7 +402,7 @@ export default function Home() {
                 </div>,
                 <div key="outside-back" className="w-full h-full bg-[#111] p-6 flex flex-col items-center justify-center relative overflow-hidden">
                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                   <img src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=400&auto=format&fit=crop" alt="Leather Texture" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" />
+                   <Image src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?q=80&w=400&auto=format&fit=crop" alt="Leather Texture" fill sizes="(max-width: 768px) 100vw, 33vw" className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay" />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
                    <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center relative z-10 bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.5)]">
                      <span className="font-serif text-white/50 text-[10px]">JM</span>
