@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useTransform, useMotionValue } from 'motion/react';
+import { useLenis } from 'lenis/react';
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { DoubleBezel } from "@/components/ui/DoubleBezel";
 import { FluidNav } from "@/components/ui/FluidNav";
@@ -22,8 +23,12 @@ import { BrandMarquee } from "@/components/ui/BrandMarquee";
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   
-  // Link logo position to scroll progress
-  const { scrollYProgress } = useScroll();
+  // Sync logo position perfectly with Lenis smooth scroll engine
+  const scrollYProgress = useMotionValue(0);
+  useLenis(({ progress }) => {
+    scrollYProgress.set(progress);
+  });
+  
   const logoY = useTransform(scrollYProgress, [0, 1], ["0px", "calc(100dvh - 100px)"]);
 
   return (
