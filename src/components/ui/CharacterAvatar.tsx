@@ -11,7 +11,7 @@ export function CharacterAvatar() {
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-      className="relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center shadow-lg cursor-pointer"
+      className="relative w-[64px] h-[64px] md:w-16 md:h-16 rounded-full overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center shadow-lg cursor-pointer"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onHoverStart={() => setIsWinking(true)}

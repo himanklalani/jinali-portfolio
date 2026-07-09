@@ -63,11 +63,11 @@ export default function Home() {
       {/* Vertical Scroll Progress Bar & Avatar */}
       <div className="fixed top-0 bottom-0 left-6 md:left-10 z-50 pointer-events-none w-0">
         {/* Subtle Background Track */}
-        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+        <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
         
         {/* Active Progress Fill */}
         <motion.div 
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-emerald-500/0 via-emerald-500/50 to-emerald-400 origin-top"
+          className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-emerald-500/0 via-emerald-500/50 to-emerald-400 origin-top"
           style={{ height: "100%", scaleY: scrollYProgress }}
         />
 
@@ -82,7 +82,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <VolumetricStudio className="!min-h-[100dvh]" spots={[28, 72]} fixtureSpots={[25, 75]} isReady={isLoaded}>
-        <div className="relative z-10 flex h-full flex-col px-4 md:px-12 lg:px-24 pointer-events-none pt-[25vh] md:pt-[25vh] lg:pt-[30vh]">
+        <div className="relative z-10 flex h-full flex-col px-4 md:px-12 lg:px-24 pointer-events-none pt-[50vh] md:pt-[25vh] lg:pt-[30vh]">
           <div className="mx-auto max-w-7xl w-full">
             <FadeUp isReady={isLoaded}>
               <div className="mb-6 inline-flex shimmer-border rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase">

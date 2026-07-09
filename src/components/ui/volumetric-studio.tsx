@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import { motion } from "motion/react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { SpotLight } from "@react-three/drei";
+import { Object3D } from "three";
 import { cn } from "@/lib/utils";
 
 // Suppress known Three.js deprecation warning from R3F internals
@@ -34,20 +35,36 @@ function ResponsiveBeams({ spots, lightColor }: { spots: number[], lightColor?: 
         // The Canvas starts exactly below the fixtures in the DOM
         const yPos = viewport.height / 2;
         
+        // On mobile (<768px), we want the beams to point straight down
+        const isMobile = size.width < 768;
+        
+        const target = useMemo(() => {
+          const obj = new Object3D();
+          if (isMobile) {
+            obj.position.set(xPos, yPos - 10, 0); // straight down
+          } else {
+            obj.position.set(0, 0, 0); // cross at center
+          }
+          return obj;
+        }, [isMobile, xPos, yPos]);
+
         return (
-          <SpotLight
-            key={i}
-            distance={viewport.height * 2}
-            angle={0.25}
-            attenuation={viewport.height * 0.8}
-            anglePower={5}
-            color={`rgb(${lightColor})`}
-            position={[xPos, yPos, 0]}
-            volumetric
-            opacity={1}
-            radiusTop={0.1}
-            radiusBottom={viewport.width * 0.3}
-          />
+          <React.Fragment key={i}>
+            <primitive object={target} />
+            <SpotLight
+              distance={viewport.height * 2}
+              angle={0.25}
+              attenuation={viewport.height * 0.8}
+              anglePower={5}
+              color={`rgb(${lightColor})`}
+              position={[xPos, yPos, 0]}
+              target={target}
+              volumetric
+              opacity={1}
+              radiusTop={0.1}
+              radiusBottom={viewport.width * 0.3}
+            />
+          </React.Fragment>
         );
       })}
     </>
@@ -229,8 +246,8 @@ function Room({
                <div className="absolute bottom-[-8px] left-1/2 -translate-x-1/2 w-[18px] h-[18px] rounded-full border border-zinc-900 shadow-[0_4px_8px_rgba(0,0,0,1),inset_0_1px_2px_rgba(255,255,255,0.3)]"
                     style={{ background: 'radial-gradient(circle at top left, #777, #111)' }} />
             </div>
-            <div className="relative mt-[6px] w-[54px] h-[64px] flex justify-center perspective-near origin-top"
-                 style={{ transform: `rotate(${(pos - 50) * 1.3}deg)` }}>
+            <div className="relative mt-[6px] w-[54px] h-[64px] flex justify-center perspective-near origin-top rotate-0 md:rotate-[var(--bulb-rotate)] transition-transform duration-300"
+                 style={{ '--bulb-rotate': `${(pos - 50) * 1.3}deg` } as any}>
               <div className="absolute inset-0 rounded-b-2xl rounded-t-sm border border-black shadow-[0_20px_30px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col justify-evenly"
                    style={{ background: 'linear-gradient(to right, #111 0%, #3a3a3a 30%, #555 50%, #2a2a2a 80%, #000 100%)' }}>
                  <div className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none" style={{ backgroundImage: METAL_NOISE }} />
