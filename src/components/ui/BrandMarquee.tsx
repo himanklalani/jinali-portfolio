@@ -37,7 +37,7 @@ export const BrandMarquee = () => {
         }
         .marquee-track {
           display: flex;
-          width: 200%;
+          width: max-content;
           animation: marquee 35s linear infinite;
         }
         .marquee-track:hover {
