@@ -62,7 +62,7 @@ function ResponsiveBeams({ spots, lightColor }: { spots: number[], lightColor?: 
               volumetric
               opacity={1}
               radiusTop={0.1}
-              radiusBottom={isMobile ? viewport.width * 0.7 : viewport.width * 0.3}
+              radiusBottom={isMobile ? viewport.width * 0.8 : viewport.width * 0.3}
             />
           </React.Fragment>
         );
@@ -371,7 +371,6 @@ export const VolumetricStudio = ({
   }, [isReady]);
 
   const effectiveSpots = isMobile && spots.length === 2 ? [35, 65] : spots;
-  const effectiveFixtureSpots = isMobile && fixtureSpots.length === 2 ? [35, 65] : fixtureSpots;
 
   return (
     <section className={cn("relative w-full h-[100dvh] bg-black overflow-hidden font-sans", className)}>
@@ -380,7 +379,7 @@ export const VolumetricStudio = ({
         intensity={1}
         lightColor="230,240,255"
         spots={effectiveSpots}
-        fixtureSpots={effectiveFixtureSpots}
+        fixtureSpots={fixtureSpots}
         isFlickering={isFlickering}
       />
       <motion.div 
