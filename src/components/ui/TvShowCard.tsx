@@ -42,49 +42,72 @@ export function TvShowCard({ className }: { className?: string }) {
         </div>
       </div>
 
-      {/* The Cinematic Screen Component */}
+      {/* The TV Screen Component */}
       <div 
-        className="relative w-full aspect-[16/9] mx-auto cursor-pointer group/screen overflow-hidden bg-[#050505] rounded-3xl border border-white/5 shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
+        className="relative w-full max-w-[420px] aspect-[4/3] mx-auto cursor-pointer group/tv"
         onClick={handleNextShow}
       >
-        {/* Animated Grain Background (BetterGrain style) */}
-        <motion.div
-          animate={{ x: keyframesX, y: keyframesY }}
-          transition={{ repeat: Infinity, duration: 0.4, ease: "linear" }}
-          className="absolute -inset-[100%] opacity-25 pointer-events-none mix-blend-screen"
-          style={{
-            backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')",
-            backgroundSize: "256px 256px"
-          }}
-        />
+        {/* CRT Screen Content — sits BEHIND the TV PNG */}
+        <div className="absolute top-[18%] bottom-[20%] left-[16%] right-[22%] overflow-hidden bg-[#050505] z-10 flex items-center justify-center rounded-[20px] shadow-[inset_0_0_40px_rgba(0,0,0,1)]">
+          
+          {/* Animated Grain Background (BetterGrain style) */}
+          <motion.div
+            animate={{ x: keyframesX, y: keyframesY }}
+            transition={{ repeat: Infinity, duration: 0.4, ease: "linear" }}
+            className="absolute -inset-[100%] opacity-25 pointer-events-none mix-blend-screen"
+            style={{
+              backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')",
+              backgroundSize: "256px 256px"
+            }}
+          />
 
-        {/* Soft Vignette / Inner Edge Shadow */}
-        <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_120px_rgba(0,0,0,0.8)] z-10" />
+          {/* CRT Scanlines */}
+          <div 
+            className="absolute inset-0 pointer-events-none opacity-40 z-10 mix-blend-overlay"
+            style={{
+              backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.08), rgba(0, 255, 0, 0.04), rgba(0, 0, 255, 0.08))',
+              backgroundSize: '100% 3px, 6px 100%'
+            }}
+          />
 
-        {/* Ambient Center Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-white/5 blur-[80px] rounded-full pointer-events-none z-0" />
+          {/* Screen Content */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-20">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+                animate={{ opacity: [0.8, 1, 0.9, 1, 0.8], scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 1.05, filter: "blur(4px)" }}
+                transition={{ duration: 0.3 }}
+                className="relative flex flex-col items-center justify-center"
+              >
+                <span className="block text-[0.45rem] uppercase tracking-[0.4em] text-emerald-400/90 mb-2 font-mono" style={{ textShadow: "0 0 5px rgba(52,211,153,0.5)" }}>
+                  HDMI 1
+                </span>
+                <h4 
+                  className="font-serif text-3xl md:text-4xl text-white font-medium tracking-tight leading-tight"
+                  style={{
+                    textShadow: `-1.5px 0 1px rgba(255,0,0,0.8), 1.5px 0 1px rgba(0,0,255,0.8), 0 0 15px rgba(255,255,255,0.6)`
+                  }}
+                >
+                  {currentShow.title}
+                </h4>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-        {/* Screen Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-20">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="flex flex-col items-center justify-center w-full h-full"
-            >
-              <span className="block text-[0.6rem] md:text-xs uppercase tracking-[0.4em] text-white/40 mb-4 font-mono">
-                Now Playing
-              </span>
-              
-              <h4 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white/90 font-medium tracking-tight drop-shadow-2xl">
-                {currentShow.title}
-              </h4>
-            </motion.div>
-          </AnimatePresence>
+          {/* Screen Glare */}
+          <div className="absolute inset-0 pointer-events-none bg-linear-to-bl from-white/0 via-white/5 to-white/10 z-30" />
         </div>
+
+        {/* TV PNG on top — bezel naturally masks the screen content above */}
+        <Image 
+          src="/tv_mockup_new.png" 
+          alt="Retro TV" 
+          fill
+          sizes="420px"
+          className="absolute inset-0 w-full h-full object-contain z-30 pointer-events-none drop-shadow-2xl"
+        />
       </div>
 
       {/* Description / Lessons */}
