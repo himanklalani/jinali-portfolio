@@ -62,7 +62,7 @@ function ResponsiveBeams({ spots, lightColor }: { spots: number[], lightColor?: 
               volumetric
               opacity={1}
               radiusTop={0.1}
-              radiusBottom={viewport.width * 0.3}
+              radiusBottom={isMobile ? viewport.width * 0.7 : viewport.width * 0.3}
             />
           </React.Fragment>
         );
@@ -329,6 +329,14 @@ export const VolumetricStudio = ({
 }) => {
   const [lightsOn, setLightsOn] = useState(false);
   const [isFlickering, setIsFlickering] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  React.useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
   
   React.useEffect(() => {
     if (!isReady) return;
@@ -361,14 +369,18 @@ export const VolumetricStudio = ({
     runFlicker();
     return () => { mounted = false; };
   }, [isReady]);
+
+  const effectiveSpots = isMobile && spots.length === 2 ? [35, 65] : spots;
+  const effectiveFixtureSpots = isMobile && fixtureSpots.length === 2 ? [35, 65] : fixtureSpots;
+
   return (
     <section className={cn("relative w-full h-[100dvh] bg-black overflow-hidden font-sans", className)}>
       <Room
         lightsOn={lightsOn}
         intensity={1}
         lightColor="230,240,255"
-        spots={spots}
-        fixtureSpots={fixtureSpots}
+        spots={effectiveSpots}
+        fixtureSpots={effectiveFixtureSpots}
         isFlickering={isFlickering}
       />
       <motion.div 
