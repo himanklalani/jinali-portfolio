@@ -7,7 +7,7 @@
   overflow: hidden;
   position: relative;
   outline: none;
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 #infinite-grid-menu-canvas:active {

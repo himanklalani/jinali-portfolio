@@ -530,7 +530,7 @@ class ArcballControl {
       }
     });
 
-    canvas.style.touchAction = 'none';
+    canvas.style.touchAction = 'pan-y';
   }
 
   public update(deltaTime: number, targetFrameDuration = 16): void {
@@ -1136,7 +1136,7 @@ export const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0, o
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      <canvas id="infinite-grid-menu-canvas" ref={canvasRef} data-lenis-prevent="true" />
+      <canvas id="infinite-grid-menu-canvas" ref={canvasRef} />
 
       <div className={`absolute top-6 md:top-10 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-opacity duration-700 ${isMoving ? 'opacity-0' : 'opacity-100'}`}>
         <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10">
