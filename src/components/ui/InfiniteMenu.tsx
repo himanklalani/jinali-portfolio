@@ -1194,7 +1194,7 @@ export const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0, o
             <polyline points="19 9 22 12 19 15"></polyline>
             <line x1="2" y1="12" x2="22" y2="12"></line>
           </svg>
-          <span className="text-[10px] font-semibold text-white/60 uppercase tracking-widest">Drag to explore</span>
+          <span className="text-[10px] font-semibold text-white/60 uppercase tracking-widest">Hold and move to explore</span>
         </div>
       </div>
 
