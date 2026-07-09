@@ -22,7 +22,7 @@ function ResponsiveBeams({ spots, lightColor }: { spots: number[], lightColor?: 
     <>
       {spots.map((pos, i) => {
         // The angle the physical bulb is tilted at
-        const theta = (pos - 50) * 1.3;
+        const theta = (pos - 50) * 2.2;
         // The bulb cylinder is 64px tall. When it tilts by theta, the bottom lens swings horizontally.
         const pixelShift = 64 * Math.sin(theta * (Math.PI / 180));
         // Convert the pixel shift into 3D units to offset the beam origin

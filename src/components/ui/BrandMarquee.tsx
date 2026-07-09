@@ -3,23 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-const brands = [
-  { name: 'Bumble', src: '/brands/bumble.png' },
-  { name: 'Swiggy', src: '/brands/swiggy.png' },
-  { name: 'Clinique', src: '/brands/clinique.png' },
-  { name: 'Mercedes Benz', src: '/brands/mercedes.png' },
-  { name: 'Label Ritu Kumar', src: '/brands/ritukumar.png' },
-  { name: 'Casa Bacardi', src: '/brands/bacardi.png' },
-  { name: 'H&M', src: '/brands/hm.png' },
-  { name: 'Nykaa', src: '/brands/nykaa.png' },
-  { name: 'Love Beauty & Planet', src: '/brands/lovebeauty.png' },
-  { name: 'Noise', src: '/brands/noise.png' },
-  { name: 'Coach', src: '/brands/coach.png' },
-  { name: 'Mars', src: '/brands/mars.png' },
-  { name: 'Zara', src: '/brands/zara.png' },
-  { name: 'Myntra', src: '/brands/myntra.png' },
-  { name: 'BGMI', src: '/brands/bgmi.png' },
-];
+const brands: { name: string; src: string }[] = [];
 
 export const BrandMarquee = () => {
   return (
