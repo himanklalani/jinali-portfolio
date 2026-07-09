@@ -49,7 +49,7 @@ export const BrandMarquee = () => {
         Brands & IPs Built With
       </p>
 
-      <div className="relative w-full flex overflow-hidden">
+      <div className="relative w-full overflow-hidden">
         {/* We duplicate the array inside the track to create a seamless infinite loop */}
         <div className="marquee-track">
           {[...brands, ...brands].map((brand, i) => (
