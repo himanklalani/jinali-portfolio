@@ -14,7 +14,7 @@ if (typeof window !== "undefined") {
     originalWarn(...args);
   };
 }
-const METAL_NOISE = 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.5%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E")';
+const METAL_NOISE = '';
 
 function ResponsiveBeams({ spots, lightColor }: { spots: number[], lightColor?: string }) {
   const { viewport, size } = useThree();
@@ -80,6 +80,7 @@ type RoomProps = {
   vignette?: number;
   isFlickering?: boolean;
   className?: string;
+  isMobile?: boolean;
 };
 function Room({
   backWall = {
@@ -96,6 +97,7 @@ function Room({
   vignette = 0.55,
   isFlickering = false,
   className = "",
+  isMobile = false,
 }: RoomProps) {
   const { tl, tr, br, bl } = backWall;
   const poly = useMemo(
@@ -178,7 +180,6 @@ function Room({
           zIndex: 15,
           opacity: lightsOn ? intensity : 0,
           transition: isFlickering ? "none" : `opacity 700ms ${EASE}`,
-          mixBlendMode: "screen",
           willChange: "opacity",
         }}
       >
@@ -213,7 +214,7 @@ function Room({
       </div>
       <div 
         className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 16, mixBlendMode: "screen" }}
+        style={{ zIndex: 16 }}
       >
         <motion.div
           initial={{ opacity: 0 }}
@@ -223,7 +224,7 @@ function Room({
           style={{ willChange: "opacity" }}
         >
           {/* Use a single unified WebGL context with a DPR cap for performance */}
-          <Canvas dpr={[1, 1.5]} frameloop="demand" camera={{ position: [0, 0, 10], fov: 45 }} shadows={false} gl={{ alpha: true }}>
+          <Canvas dpr={isMobile ? [1, 1] : [1, 1.5]} frameloop="demand" camera={{ position: [0, 0, 10], fov: 45 }} shadows={false} gl={{ alpha: true }}>
             <ambientLight intensity={0.5} />
             <ResponsiveBeams spots={spots} lightColor={lightColor} />
           </Canvas>
@@ -250,7 +251,6 @@ function Room({
                  style={{ '--bulb-rotate': `${(pos - 50) * 1.3}deg` } as any}>
               <div className="absolute inset-0 rounded-b-2xl rounded-t-sm border border-black shadow-[0_20px_30px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col justify-evenly"
                    style={{ background: 'linear-gradient(to right, #111 0%, #3a3a3a 30%, #555 50%, #2a2a2a 80%, #000 100%)' }}>
-                 <div className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none" style={{ backgroundImage: METAL_NOISE }} />
                  <div className="w-full h-[2px] bg-black/90 shadow-[0_1px_0_rgba(255,255,255,0.15)] z-10" />
                  <div className="w-full h-[2px] bg-black/90 shadow-[0_1px_0_rgba(255,255,255,0.15)] z-10" />
                  <div className="w-full h-[2px] bg-black/90 shadow-[0_1px_0_rgba(255,255,255,0.15)] z-10" />
@@ -299,7 +299,6 @@ function Room({
             boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15), inset 0 -1px 2px rgba(0,0,0,0.9), 0 10px 20px -5px rgba(0,0,0,0.8)'
           }}
         >
-          <div className="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none" style={{ backgroundImage: METAL_NOISE }} />
         </div>
       </div>
       <div
@@ -370,7 +369,7 @@ export const VolumetricStudio = ({
     return () => { mounted = false; };
   }, [isReady]);
 
-  const effectiveSpots = isMobile && spots.length === 2 ? [35, 65] : spots;
+  const effectiveSpots = isMobile && spots.length === 2 ? [34, 66] : spots;
 
   return (
     <section className={cn("relative w-full h-[100dvh] bg-black overflow-hidden font-sans", className)}>
@@ -381,6 +380,7 @@ export const VolumetricStudio = ({
         spots={effectiveSpots}
         fixtureSpots={fixtureSpots}
         isFlickering={isFlickering}
+        isMobile={isMobile}
       />
       <motion.div 
         animate={{ opacity: lightsOn ? 1 : 0 }}

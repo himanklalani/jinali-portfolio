@@ -1,0 +1,1 @@
+const fs = require('fs'); let content = fs.readFileSync('src/app/page.tsx', 'utf8'); content = content.replace(/\s*\{\/\*\s*eslint-disable-next-line\s*@next\/next\/no-img-element\s*\*\/\}\s*<Image src="https:\/\/images\.unsplash\.com[^>]+>\s*/g, ''); fs.writeFileSync('src/app/page.tsx', content);
