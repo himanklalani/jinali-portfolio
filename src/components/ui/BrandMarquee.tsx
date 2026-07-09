@@ -3,22 +3,22 @@
 import React from 'react';
 import Image from 'next/image';
 
-const brands: { name: string; src: string }[] = [
+const brands: { name: string; src: string; needsBg?: boolean }[] = [
   { name: 'Campus', src: '/logo/CAMPUS.png' },
   { name: 'Clinique', src: '/logo/Clinique-Logo-SVG_004.svg' },
   { name: 'Maybelline', src: '/logo/Maybelline-logo-3.svg' },
-  { name: 'Nars', src: '/logo/NARS-Cosmetics-Logo-SVG.svg' },
-  { name: 'Noise', src: '/logo/Noise.svg' },
-  { name: 'Saint Laurent', src: '/logo/Saint-Laurent-Logo-1.svg' },
+  { name: 'Nars', src: '/logo/NARS-Cosmetics-Logo-SVG.svg', needsBg: true },
+  { name: 'Noise', src: '/logo/Noise.svg', needsBg: true },
+  { name: 'Saint Laurent', src: '/logo/Saint-Laurent-Logo-1.svg', needsBg: true },
   { name: 'Tira', src: '/logo/Tira_logo.webp' },
-  { name: 'Amazon', src: '/logo/amazon.svg' },
+  { name: 'Amazon', src: '/logo/amazon.svg', needsBg: true },
   { name: 'Beco', src: '/logo/beco.jpeg' },
-  { name: 'Caudalie', src: '/logo/caudalie-seeklogo-2.svg' },
+  { name: 'Caudalie', src: '/logo/caudalie-seeklogo-2.svg', needsBg: true },
   { name: 'Crocs', src: '/logo/crocs-wordmark.svg' },
   { name: 'Foxtale', src: '/logo/foxtale.png' },
   { name: 'Instax', src: '/logo/instax.svg' },
   { name: 'Kerastase', src: '/logo/kerastase.svg' },
-  { name: 'Kiehls', src: '/logo/kiehls-logo.svg' },
+  { name: 'Kiehls', src: '/logo/kiehls-logo.svg', needsBg: true },
   { name: 'Mercedes', src: '/logo/mercedes.svg' },
   { name: 'Myntra', src: '/logo/myntra.png' },
   { name: 'Nykaa', src: '/logo/nykaa-1.svg' },
@@ -54,7 +54,7 @@ export const BrandMarquee = () => {
         <div className="marquee-track">
           {[...brands, ...brands].map((brand, i) => (
             <div key={i} className="flex items-center justify-center flex-shrink-0 w-[15vw] min-w-[120px] md:min-w-[180px] px-8 cursor-default">
-              <div className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+              <div className={`relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center ${brand.needsBg ? 'bg-white/90 p-2 rounded-lg' : ''}`}>
                 <Image 
                   src={brand.src} 
                   alt={brand.name} 
