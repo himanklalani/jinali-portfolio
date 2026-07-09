@@ -200,7 +200,7 @@ function Room({
         }}
       >
         {fixtureSpots.map((pos, i) => (
-          <div key={i} className="absolute flex flex-col items-center origin-top" style={{ left: `${pos}%`, top: '10%', transform: `translate(-50%, -4px) rotate(${(pos - 50) * 0.8}deg)` }}>
+          <div key={i} className="absolute flex flex-col items-center origin-top" style={{ left: `${pos}%`, top: '10%', transform: `translate(-50%, -4px) rotate(${(pos - 50) * 1.3}deg)` }}>
             <div className="w-[14px] h-[34px] rounded-sm border border-zinc-900 shadow-[0_5px_10px_rgba(0,0,0,0.9),inset_0_0_4px_rgba(255,255,255,0.5)] relative overflow-hidden"
                  style={{ background: 'linear-gradient(to right, #666 0%, #ffffff 40%, #999 60%, #333 100%)' }}>
                <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] bg-zinc-900 rounded-full shadow-[inset_0_1px_1px_rgba(0,0,0,1)]" />
