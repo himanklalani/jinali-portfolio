@@ -16,7 +16,6 @@ import { MediaEmbedModal } from "@/components/ui/MediaEmbedModal";
 import { TvShowCard } from "@/components/ui/TvShowCard";
 import { InteractiveBook } from "@/components/ui/InteractiveBook";
 import { MusicCarousel } from "@/components/ui/MusicCarousel";
-import { FilmStrip } from "@/components/ui/FilmStrip";
 import { FortuneCookie } from "@/components/ui/FortuneCookie";
 import { Preloader } from "@/components/ui/Preloader";
 import { BrandMarquee } from "@/components/ui/BrandMarquee";
