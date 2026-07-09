@@ -48,57 +48,72 @@ export function TvShowCard({ className }: { className?: string }) {
         onClick={handleNextShow}
       >
         <Image 
-          src="/tv_mockup.avif" 
+          src="/tv_mockup.png" 
           alt="Retro TV" 
           fill
           className="absolute inset-0 w-full h-full object-contain z-10 pointer-events-none drop-shadow-2xl"
         />
 
         {/* Inner Screen Area */}
-        <div className="absolute top-[18%] bottom-[22%] left-[15%] right-[15%] overflow-hidden bg-black/95 z-20 flex items-center justify-center rounded-[10%] shadow-[inset_0_0_20px_rgba(0,0,0,1)]">
-          {/* Grain Background */}
+        <div className="absolute top-[22%] bottom-[28%] left-[18%] right-[18%] overflow-hidden bg-[#050505] z-20 flex items-center justify-center rounded-[20px] shadow-[inset_0_0_30px_rgba(0,0,0,1)]">
+          
+          {/* Grunge / Static Background */}
           <motion.div
             animate={{ x: keyframesX, y: keyframesY }}
-            transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
-            className="absolute -inset-[200%] opacity-20 pointer-events-none mix-blend-screen"
+            transition={{ repeat: Infinity, duration: 0.6, ease: "linear" }}
+            className="absolute -inset-[200%] opacity-30 pointer-events-none mix-blend-screen"
             style={{
               backgroundImage: "url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')",
-              backgroundSize: "250px 250px"
+              backgroundSize: "200px 200px"
             }}
           />
 
-          {/* CRT Scanlines Overlay */}
+          {/* CRT Scanlines */}
           <div 
-            className="absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay z-10"
+            className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay z-10"
             style={{
-              backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))',
+              backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.08), rgba(0, 255, 0, 0.04), rgba(0, 0, 255, 0.08))',
               backgroundSize: '100% 4px, 6px 100%'
             }}
           />
+          
+          {/* Edge Vignette / Curvature Shadow */}
+          <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] z-10" />
 
           {/* Screen Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-0">
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-20">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
                 animate={{ opacity: [0.8, 1, 0.9, 1, 0.8], scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
-                transition={{ duration: 0.4 }}
+                exit={{ opacity: 0, scale: 1.05, filter: "blur(4px)" }}
+                transition={{ duration: 0.3 }}
                 className="relative flex flex-col items-center justify-center"
               >
-                <span className="block text-[0.6rem] uppercase tracking-[0.3em] text-emerald-400/80 mb-2 font-mono">
-                  Input: HDMI 1
+                <span className="block text-[0.5rem] md:text-[0.65rem] uppercase tracking-[0.4em] text-emerald-400/90 mb-3 font-mono opacity-80" style={{ textShadow: "0 0 5px rgba(52,211,153,0.5)" }}>
+                  HDMI 1
                 </span>
-                <h4 className="font-serif text-3xl md:text-5xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]">
+                
+                {/* Text with Chromatic Aberration (RGB Separation) & Glow */}
+                <h4 
+                  className="font-serif text-4xl md:text-5xl text-white font-medium tracking-tight"
+                  style={{
+                    textShadow: `
+                      -2px 0 1px rgba(255, 0, 0, 0.7),
+                      2px 0 1px rgba(0, 0, 255, 0.7),
+                      0 0 15px rgba(255, 255, 255, 0.6)
+                    `
+                  }}
+                >
                   {currentShow.title}
                 </h4>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Screen Glare */}
-          <div className="absolute inset-0 pointer-events-none bg-linear-to-tr from-white/0 via-white/5 to-white/10 z-10 rounded-xl" />
+          {/* Screen Glare Overlay */}
+          <div className="absolute inset-0 pointer-events-none bg-linear-to-bl from-white/0 via-white/5 to-white/10 z-30" />
         </div>
       </div>
 
