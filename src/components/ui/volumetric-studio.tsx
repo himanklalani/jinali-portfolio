@@ -169,27 +169,7 @@ function Room({
           {/* Use a single unified WebGL context with a DPR cap for performance */}
           <Canvas dpr={[1, 1.5]} frameloop="demand" camera={{ position: [0, 0, 10], fov: 45 }} shadows={false} gl={{ alpha: true }}>
             <ambientLight intensity={0.5} />
-            {spots.map((pos, i) => {
-              // Map percentage position (0-100) to 3D world space (approx -4 to 4 depending on FOV/aspect)
-              // Assuming a typical aspect ratio, this math loosely places them horizontally
-              const xPos = ((pos / 100) - 0.5) * 8.5;
-              
-              return (
-                <SpotLight
-                  key={i}
-                  distance={12}
-                  angle={0.25}
-                  attenuation={6}
-                  anglePower={5}
-                  color={`rgb(${lightColor})`}
-                  position={[xPos, 4.1, 0]}
-                  volumetric
-                  opacity={1}
-                  radiusTop={0.1}
-                  radiusBottom={4}
-                />
-              );
-            })}
+            <ResponsiveBeams spots={spots} lightColor={lightColor} />
           </Canvas>
         </motion.div>
       </div>
@@ -200,7 +180,7 @@ function Room({
         }}
       >
         {fixtureSpots.map((pos, i) => (
-          <div key={i} className="absolute flex flex-col items-center origin-top" style={{ left: `${pos}%`, top: '10%', transform: `translate(-50%, -4px) rotate(${(pos - 50) * 1.3}deg)` }}>
+          <div key={i} className="absolute flex flex-col items-center origin-top" style={{ left: `${pos}%`, top: '10%', transform: `translate(-50%, -4px) rotate(${(pos - 50) * 1.6}deg)` }}>
             <div className="w-[14px] h-[34px] rounded-sm border border-zinc-900 shadow-[0_5px_10px_rgba(0,0,0,0.9),inset_0_0_4px_rgba(255,255,255,0.5)] relative overflow-hidden"
                  style={{ background: 'linear-gradient(to right, #666 0%, #ffffff 40%, #999 60%, #333 100%)' }}>
                <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] bg-zinc-900 rounded-full shadow-[inset_0_1px_1px_rgba(0,0,0,1)]" />
