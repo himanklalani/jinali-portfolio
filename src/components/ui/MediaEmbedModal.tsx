@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { InfiniteMenu } from './InfiniteMenu';
+import DomeGallery from './DomeGallery';
 
 interface MenuItem {
   title: string;
@@ -26,7 +26,8 @@ export function MediaEmbedModal({ items }: { items: MenuItem[] }) {
     return url.includes('instagram.com');
   };
 
-  const handleItemClick = (item: MenuItem) => {
+  const handleItemClick = (index: number) => {
+    const item = items[index];
     if (isEmbeddable(item.link)) {
       setActiveMedia(item.link);
     } else {
@@ -36,7 +37,11 @@ export function MediaEmbedModal({ items }: { items: MenuItem[] }) {
 
   return (
     <>
-      <InfiniteMenu items={items} onItemClick={handleItemClick} />
+      <DomeGallery 
+        images={items.map(item => ({ src: item.image, alt: item.title }))} 
+        onItemClick={handleItemClick}
+        grayscale={false}
+      />
 
       <AnimatePresence>
         {activeMedia && (
