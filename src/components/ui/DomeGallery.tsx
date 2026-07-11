@@ -158,6 +158,7 @@ export default function DomeGallery({
     width: number;
     height: number;
   } | null>(null);
+  const isInViewRef = useRef(true);
 
   const rotationRef = useRef({ x: 0, y: 0 });
   const startRotRef = useRef({ x: 0, y: 0 });
@@ -278,12 +279,28 @@ export default function DomeGallery({
     openedImageHeight
   ]);
 
+  // Performance Optimization: Pause auto-rotate when off-screen
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInViewRef.current = entry.isIntersecting;
+      },
+      { threshold: 0 } // Triggers as soon as 1px is visible/hidden
+    );
+    
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const autoRotate = () => {
       // Only auto-rotate if we are NOT dragging, NOT in inertia, NOT opening an image,
-      // and it has been at least 2 seconds since the last interaction.
+      // it has been at least 2 seconds since the last interaction, AND it is visible on screen.
       const timeSinceLastDrag = performance.now() - lastDragEndAt.current;
-      if (!draggingRef.current && !inertiaRAF.current && !openingRef.current && timeSinceLastDrag > 2000) {
+      if (!draggingRef.current && !inertiaRAF.current && !openingRef.current && timeSinceLastDrag > 2000 && isInViewRef.current) {
         // Slowly increment the Y rotation (panning to the right)
         const speed = 0.05; // degree per frame
         const nextY = wrapAngleSigned(rotationRef.current.y + speed);
