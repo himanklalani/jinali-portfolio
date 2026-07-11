@@ -6,19 +6,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 const BELIEFS = [
   { 
     title: "Strategy first", 
-    desc: "Ideas without structure are just vibes. I plan everything backwards from the outcome." 
+    desc: "Ideas without a plan are just ideas. I like starting with the outcome and working backwards." 
   },
   { 
     title: "Cultural honesty", 
-    desc: "Forcing a brand into a trend it doesn't belong in is the fastest way to lose credibility." 
+    desc: "Not every trend is the right fit. The best campaigns feel natural, not forced." 
   },
   { 
-    title: "Creator respect", 
-    desc: "The best partnerships happen when brands give creators room to be themselves." 
+    title: "Talent respect", 
+    desc: "Authenticity comes from giving creators the freedom to create." 
   },
   { 
     title: "Attention to detail", 
-    desc: "The small things, the tone of a brief, the timing of a post, are what separate good from great." 
+    desc: "The smallest details often make the biggest difference" 
   }
 ];
 

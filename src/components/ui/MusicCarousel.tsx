@@ -200,7 +200,7 @@ export function MusicCarousel({
       </motion.div>
       
       {/* Navigation Indicators */}
-      <div className="flex gap-2 z-20 mt-8">
+      <div className="flex gap-2 z-20 mt-4">
         {tracks.map((track, index) => (
           <button
             key={track.id}

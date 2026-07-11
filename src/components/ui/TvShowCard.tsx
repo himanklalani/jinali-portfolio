@@ -10,7 +10,7 @@ const shows = [
   { title: "Modern Family", lesson: "Timing" },
   { title: "The Bear", lesson: "Pace" },
   { title: "Gilmore Girls", lesson: "Voice" },
-  { title: "Hacks", lesson: "Reinvention" },
+  { title: "This is Us", lesson: "Storytelling" },
   { title: "Game of Thrones", lesson: "Peak-then-drop" },
   { title: "The Office", lesson: "Relatability" },
 ]
@@ -38,7 +38,7 @@ export function TvShowCard({ className }: { className?: string }) {
         </div>
         <div>
           <h3 className="font-serif text-xl md:text-2xl text-white leading-tight">Currently Watching</h3>
-          <p className="text-xs md:text-sm text-white/50">TV taught me everything about arcs.</p>
+          <p className="text-xs md:text-sm text-white/50">Probably overthinking every plot twist.</p>
         </div>
       </div>
 

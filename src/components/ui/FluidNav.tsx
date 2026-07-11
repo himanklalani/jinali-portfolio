@@ -8,9 +8,9 @@ export function FluidNav() {
   const [isOpen, setIsOpen] = useState(false)
 
   const links = [
-    { label: 'Work', href: '#work' },
-    { label: 'Beyond', href: '#beyond' },
-    { label: 'Experience', href: '#experience' },
+    { label: 'Work Experience', href: '#experience' },
+    { label: 'Campaigns', href: '#work' },
+    { label: 'Behind the Work', href: '#beyond' },
     { label: 'Contact', href: '#contact' },
   ]
 
@@ -50,7 +50,7 @@ export function FluidNav() {
             transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
             className="fixed inset-0 z-[90] flex flex-col items-center justify-center bg-black/80 backdrop-blur-3xl"
           >
-            <nav className="flex flex-col items-center gap-8 text-center">
+            <nav className="flex flex-col items-center gap-8 text-center pt-20">
               {links.map((link, i) => (
                 <div key={link.label} className="overflow-hidden">
                   <motion.a
@@ -65,7 +65,7 @@ export function FluidNav() {
                       duration: 0.7,
                       ease: [0.32, 0.72, 0, 1],
                     }}
-                    className="block font-serif text-5xl md:text-7xl hover:text-white/70 transition-colors"
+                    className="block font-serif text-5xl md:text-7xl hover:text-white/70 transition-colors py-2 md:py-4"
                   >
                     {link.label}
                   </motion.a>

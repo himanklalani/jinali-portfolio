@@ -45,8 +45,8 @@ export const BrandMarquee = () => {
         }
       `}</style>
 
-      <p className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-white/40 uppercase mb-10 text-center px-4">
-        Brands & IPs Built With
+      <p className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-white/60 uppercase mb-10 text-center px-4">
+        Brands I've Worked With
       </p>
 
       <div className="relative w-full overflow-hidden">

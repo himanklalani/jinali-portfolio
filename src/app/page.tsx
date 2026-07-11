@@ -23,7 +23,7 @@ import { ExpandableDrawers } from "@/components/ui/ExpandableDrawers";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   // Sync avatar position directly with Lenis scroll progress (pixel-based so useTransform interpolates correctly)
   const scrollYProgress = useMotionValue(0);
   const [travelDistance, setTravelDistance] = useState(0);
@@ -65,15 +65,15 @@ export default function Home() {
       <div className="fixed top-0 bottom-0 left-7 md:left-10 z-50 pointer-events-none w-0">
         {/* Subtle Background Track */}
         <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
-        
+
         {/* Active Progress Fill */}
-        <motion.div 
+        <motion.div
           className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-emerald-500/0 via-emerald-500/50 to-emerald-400 origin-top"
           style={{ height: "100%", scaleY: scrollYProgress }}
         />
 
         {/* Avatar Thumb — starts at top:32px, travels logoY pixels down */}
-        <motion.div 
+        <motion.div
           className="absolute top-8 left-1/2 -translate-x-1/2 pointer-events-auto"
           style={{ y: logoY }}
         >
@@ -94,13 +94,13 @@ export default function Home() {
             </FadeUp>
             <div className="mb-2">
               <h1 className="font-serif text-6xl leading-[0.9] tracking-tight md:text-8xl lg:text-[10rem] text-transparent bg-clip-text bg-[linear-gradient(180deg,white,rgba(255,255,255,0.4))] drop-shadow-2xl pb-4">
-                Jinali Mehta.
+                Jinali Mehta
               </h1>
             </div>
-            
+
             <FadeUp delay={0.2} isReady={isLoaded}>
               <p className="mt-8 max-w-2xl text-xl font-light leading-relaxed text-white/60 md:text-2xl drop-shadow-md text-balance">
-                I don't just broker partnerships. I look for the overlap between culture, timing, and a creator's actual voice, and then build the strategy around it.
+                I build brand partnerships, shape campaign narratives, and connect talent with brands through culture and strategy.
               </p>
             </FadeUp>
 
@@ -140,25 +140,21 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 relative items-start">
           {/* Left Column - Sticky Typography */}
           <div className="md:col-span-5 md:sticky md:top-32">
-            <FadeUp>
-              <div className="mb-6 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-white/80 uppercase">
-                <ProTextType text="Trajectory" />
-              </div>
-            </FadeUp>
+
             <FadeUp delay={0.1}>
-              <h2 className="font-serif text-5xl md:text-7xl mb-8 leading-tight pb-2">Work<br/>Experience.</h2>
+              <h2 className="font-serif text-5xl md:text-7xl mb-8 leading-tight pb-2">Work<br />Experience</h2>
             </FadeUp>
           </div>
 
           {/* Right Column - Flowing Cards */}
           <div className="md:col-span-7 flex flex-col gap-6">
             {[
-              { company: "One Hand Clap", role: "Associate Brand Solutions Lead", period: "Jan 2026 to Present" },
-              { company: "REPRESENT", role: "Manager, Brand Solutions", period: "Nov 2023 to Dec 2025" },
-              { company: "Monk Entertainment", role: "Talent Manager", period: "Mar 2022 to Oct 2023" }
+              { company: "One Hand Clap", role: "Associate Brand Solutions Lead", period: "Jan 2026 to Present", link: "https://www.instagram.com/one.hand.clap/" },
+              { company: "REPRESENT", role: "Manager, Brand Solutions", period: "Nov 2023 to Dec 2025", link: "https://www.instagram.com/representmgmt/" },
+              { company: "Monk Entertainment", role: "Talent Manager", period: "Mar 2022 to Oct 2023", link: "https://www.instagram.com/monkentertainment/" }
             ].map((job, i) => (
               <FadeUp key={i} delay={i * 0.1}>
-                <div className="group cursor-default">
+                <a href={job.link} target="_blank" rel="noopener noreferrer" className="group block cursor-pointer">
                   <DoubleBezel className="w-full transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-1 group-hover:scale-[1.02]" innerClassName="flex flex-col gap-6 !p-8 md:!p-10 transition-colors duration-700 group-hover:bg-[#0f0f0f]">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-6">
                       <h3 className="font-serif text-3xl text-white">{job.company}</h3>
@@ -166,11 +162,15 @@ export default function Home() {
                         {job.period}
                       </div>
                     </div>
-                    <div>
+                    <div className="flex items-center justify-between">
                       <p className="text-xl text-white/80 font-light">{job.role}</p>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-white/30 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 shrink-0">
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                      </svg>
                     </div>
                   </DoubleBezel>
-                </div>
+                </a>
               </FadeUp>
             ))}
           </div>
@@ -181,17 +181,16 @@ export default function Home() {
       <section id="work" className="relative z-10 w-full bg-[#050505] py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-12 lg:px-24 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-xl">
-           <FadeUp>
-             <div className="mb-6 inline-flex shimmer-border rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase">
-               <span className="shimmer-text">Visuals</span>
-             </div>
-             <h2 className="font-serif text-5xl md:text-7xl mb-6 pb-2 text-transparent bg-clip-text bg-[linear-gradient(180deg,white,rgba(255,255,255,0.6))]">Moments & Campaigns.</h2>
-           </FadeUp>
-           <FadeUp delay={0.2}>
-             <p className="text-lg text-white/60 text-balance">
-               From integrated campaigns to IP development and music marketing. Each card includes real content from the campaigns that moved culture forward.
-             </p>
-           </FadeUp>
+            <FadeUp>
+
+              <h2 className="font-serif text-5xl md:text-7xl mb-6 pb-2 text-transparent bg-clip-text bg-[linear-gradient(180deg,white,rgba(255,255,255,0.6))]">Moments & Campaigns</h2>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <p className="text-lg text-white/60 text-balance">
+                From talent partnerships to integrated campaigns, here's a glimpse of the work I've been part of.
+
+              </p>
+            </FadeUp>
           </div>
         </div>
         <div className="mx-auto max-w-7xl px-4 md:px-12 lg:px-24">
@@ -224,121 +223,129 @@ export default function Home() {
       {/* Beyond the Brief (Asymmetrical Bento) */}
       <section id="beyond" className="relative z-10 mx-auto max-w-7xl px-4 py-16 md:py-24 md:px-12 lg:px-24">
         <div className="mb-16 max-w-2xl">
-          <FadeUp>
-            <div className="mb-6 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-widest text-white/80 uppercase">
-              <ProTextType text="Beyond The Brief" />
-            </div>
-          </FadeUp>
+
           <FadeUp delay={0.1}>
-            <h2 className="font-serif text-5xl md:text-7xl text-balance pb-2">
-              The person behind the work.
+            <h2 className="font-serif text-5xl md:text-7xl text-balance pb-4">
+              The person behind the work
             </h2>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <p className="text-xl text-white/60 font-light text-balance max-w-2xl">
+              Pop culture enthusiast, chronically curious, and always exploring something new.
+            </p>
           </FadeUp>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
-          
-          <FadeUp className="md:col-span-2 md:row-span-2 min-w-0">
-            <DoubleBezel className="h-full w-full" innerClassName="flex flex-col justify-between !p-6 sm:!p-10 overflow-hidden w-full">
-              <div>
-                <h3 className="font-serif text-4xl mb-6">On Repeat.</h3>
-                <p className="text-xl font-light text-white/70 mb-8 max-w-xl text-balance">
-                  Music is my second language. My playlist is just as scattered as my campaign decks, but it shapes how I think about timing and emotion. That's what great marketing runs on anyway.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-10">
-                  {['Indie', 'Bollywood', 'Pop', 'Chillhop', 'Punjabi'].map(genre => (
-                    <span key={genre} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm">
-                      {genre}
-                    </span>
-                  ))}
+
+          <div className="md:col-span-2 md:row-span-2 flex flex-col gap-6 min-w-0">
+            {/* Top Box: On Repeat (~78%) */}
+            <FadeUp className="flex-[3.5] min-h-[500px] md:min-h-0">
+              <DoubleBezel className="h-full w-full" innerClassName="flex flex-col justify-start !p-6 sm:!p-10 overflow-hidden w-full h-full">
+                <div>
+                  <h3 className="font-serif text-4xl mb-6">On Repeat</h3>
+                  <p className="text-xl font-light text-white/70 mb-10 max-w-xl text-balance">
+Music is a big part of how I see the world. My playlists are always changing, and so are the ideas they inspire. It keeps me curious about people and the moments that make campaigns resonate. 
+                  </p>
                 </div>
-              </div>
-              <div className="w-full relative mt-8 flex justify-center scale-75 sm:scale-100 origin-top h-[350px] sm:h-auto overflow-visible">
-                <MusicCarousel 
-                  cardWidth={260} 
-                  className="w-full"
-                  tracks={[
-                    {
-                      id: "1",
-                      title: "Mirrors",
-                      artist: "Justin Timberlake",
-                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/53/74/c9/5374c99e-cff1-61a6-ca0f-fa1219d050a0/886443854406.jpg/600x600bb.jpg",
-                      songLink: "https://open.spotify.com/track/4rHZZAmHpZrA3iH5zx8frV?si=ufWiZGxVToiPyBNBp566VQ&utm_source=copy-link"
-                    },
-                    {
-                      id: "2",
-                      title: "You're U tho",
-                      artist: "Karan Aujla",
-                      coverImage: "https://i.scdn.co/image/ab67616d0000b27389e8f71cb6f3b6cc60944858",
-                      songLink: "https://open.spotify.com/track/7E4EhLK8mG4ORi3QR52r2A?si=JiOhd0N2R56XgOPaBGrjmQ&utm_source=copy-link"
-                    },
-                    {
-                      id: "3",
-                      title: "She will be loved",
-                      artist: "Maroon 5",
-                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/3e/25/d03e255d-e205-0e66-20f6-01e251896c25/14UMGIM27076.rgb.jpg/600x600bb.jpg",
-                      songLink: "https://open.spotify.com/track/7sapKrjDij2fpDVj0GxP66?si=CEFtp6UsRi-BEDseviCQWw&utm_source=copy-link"
-                    },
-                    {
-                      id: "4",
-                      title: "One Thing",
-                      artist: "One Direction",
-                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c3/d4/76/c3d4765f-006e-c9ac-6b83-50ae04894eff/dj.dqbxwvpe.jpg/600x600bb.jpg",
-                      songLink: "https://open.spotify.com/track/5G2c6FsfTzgYUzageCmfXY?si=XfcQgkU8Tsqq7I0vPb-xTw&utm_source=copy-link"
-                    },
-                    {
-                      id: "5",
-                      title: "Late Night Talking",
-                      artist: "Harry Styles",
-                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2a/19/fb/2a19fb85-2f70-9e44-f2a9-82abe679b88e/886449990061.jpg/600x600bb.jpg",
-                      songLink: "https://open.spotify.com/track/1qEmFfgcLObUfQm0j1W2CK?si=wc0wUEkyRgmu93KbyYWvog&utm_source=copy-link"
-                    },
-                    {
-                      id: "6",
-                      title: "Khat",
-                      artist: "Navjot Ahuja",
-                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ea/01/29/ea012994-51e8-6883-e1e1-c71fdd51754f/5026854264479.jpg/600x600bb.jpg",
-                      songLink: "https://open.spotify.com/track/3gixnmepHSsyAuho34rprN?si=2S90CknWR6OM9oNkKhb1Qg&utm_source=copy-link"
-                    },
-                    {
-                      id: "7",
-                      title: "Heart of Gold",
-                      artist: "Shawn Mendes",
-                      coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/96/07/3b/96073b55-8e58-ef6e-6e81-2d751ac83ed8/24UMGIM83490.rgb.jpg/600x600bb.jpg",
-                      songLink: "https://open.spotify.com/track/69YhwaZE5OTsijIt3Gp6P2?si=uFtnkc4rR9e1goG_8Ak44A&utm_source=copy-link"
-                    }
-                  ]}
-                />
-              </div>
-            </DoubleBezel>
-          </FadeUp>
+                <div className="w-full relative flex-grow flex items-center justify-center mt-auto mb-auto scale-75 sm:scale-100 origin-center min-h-[350px] overflow-visible">
+                  <MusicCarousel
+                    cardWidth={260}
+                    className="w-full"
+                    tracks={[
+                      {
+                        id: "1",
+                        title: "Mirrors",
+                        artist: "Justin Timberlake",
+                        coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/53/74/c9/5374c99e-cff1-61a6-ca0f-fa1219d050a0/886443854406.jpg/600x600bb.jpg",
+                        songLink: "https://open.spotify.com/track/4rHZZAmHpZrA3iH5zx8frV?si=ufWiZGxVToiPyBNBp566VQ&utm_source=copy-link"
+                      },
+                      {
+                        id: "2",
+                        title: "You're U tho",
+                        artist: "Karan Aujla",
+                        coverImage: "https://i.scdn.co/image/ab67616d0000b27389e8f71cb6f3b6cc60944858",
+                        songLink: "https://open.spotify.com/track/7E4EhLK8mG4ORi3QR52r2A?si=JiOhd0N2R56XgOPaBGrjmQ&utm_source=copy-link"
+                      },
+                      {
+                        id: "3",
+                        title: "She will be loved",
+                        artist: "Maroon 5",
+                        coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/3e/25/d03e255d-e205-0e66-20f6-01e251896c25/14UMGIM27076.rgb.jpg/600x600bb.jpg",
+                        songLink: "https://open.spotify.com/track/7sapKrjDij2fpDVj0GxP66?si=CEFtp6UsRi-BEDseviCQWw&utm_source=copy-link"
+                      },
+                      {
+                        id: "4",
+                        title: "One Thing",
+                        artist: "One Direction",
+                        coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c3/d4/76/c3d4765f-006e-c9ac-6b83-50ae04894eff/dj.dqbxwvpe.jpg/600x600bb.jpg",
+                        songLink: "https://open.spotify.com/track/5G2c6FsfTzgYUzageCmfXY?si=XfcQgkU8Tsqq7I0vPb-xTw&utm_source=copy-link"
+                      },
+                      {
+                        id: "5",
+                        title: "Late Night Talking",
+                        artist: "Harry Styles",
+                        coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2a/19/fb/2a19fb85-2f70-9e44-f2a9-82abe679b88e/886449990061.jpg/600x600bb.jpg",
+                        songLink: "https://open.spotify.com/track/1qEmFfgcLObUfQm0j1W2CK?si=wc0wUEkyRgmu93KbyYWvog&utm_source=copy-link"
+                      },
+                      {
+                        id: "6",
+                        title: "Khat",
+                        artist: "Navjot Ahuja",
+                        coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ea/01/29/ea012994-51e8-6883-e1e1-c71fdd51754f/5026854264479.jpg/600x600bb.jpg",
+                        songLink: "https://open.spotify.com/track/3gixnmepHSsyAuho34rprN?si=2S90CknWR6OM9oNkKhb1Qg&utm_source=copy-link"
+                      },
+                      {
+                        id: "7",
+                        title: "Heart of Gold",
+                        artist: "Shawn Mendes",
+                        coverImage: "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/96/07/3b/96073b55-8e58-ef6e-6e81-2d751ac83ed8/24UMGIM83490.rgb.jpg/600x600bb.jpg",
+                        songLink: "https://open.spotify.com/track/69YhwaZE5OTsijIt3Gp6P2?si=uFtnkc4rR9e1goG_8Ak44A&utm_source=copy-link"
+                      }
+                    ]}
+                  />
+                </div>
+              </DoubleBezel>
+            </FadeUp>
+
+            {/* Bottom Box: Resume Link (~35%) */}
+            <FadeUp delay={0.1} className="hidden md:block flex-1 min-h-[200px]">
+              <DoubleBezel className="h-full w-full" innerClassName="flex flex-col items-center justify-center !p-6 sm:!p-10 overflow-hidden w-full h-full text-center relative">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none" />
+                <h3 className="font-serif text-3xl mb-6 relative z-10">View my full journey.</h3>
+                <a href="https://drive.google.com/file/d/1fQ5oxkiK3FpCgYLVPJ_zpWWDoIX4-lmJ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" className="relative z-10">
+                  <MagneticButton>Have a look at my Resume</MagneticButton>
+                </a>
+              </DoubleBezel>
+            </FadeUp>
+          </div>
 
           <FadeUp delay={0.1} className="md:col-span-1 md:row-span-1 h-full min-w-0">
             <div className="h-full w-full flex items-center justify-center p-2 sm:p-4 md:p-8 bg-white/[0.02] border border-white/5 rounded-3xl shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
               <InteractiveBook pages={[
                 <div key="cover" className="w-full h-full bg-[#111] relative flex flex-col justify-between cursor-pointer group hover:bg-[#151515] transition-colors overflow-hidden"><div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
                   <div className="relative z-10 border border-white/20 m-3 p-3 h-[calc(100%-24px)] flex flex-col justify-between text-center">
-                    <span className="font-mono text-[8px] tracking-widest text-white/60 uppercase">Reading List</span>
+                    <span className="font-mono text-[8px] tracking-widest text-white/60 uppercase font-bold">Reading List</span>
                     <div className="py-4 border-y border-white/10 my-auto bg-black/20 backdrop-blur-sm">
-                      <h4 className="font-serif text-xl text-white drop-shadow-md">On the<br/>Shelf.</h4>
+                      <h4 className="font-serif text-xl text-white drop-shadow-md">On the<br />Shelf</h4>
                     </div>
                     <span className="text-[8px] uppercase tracking-widest text-white/40">Jinali Mehta</span>
                   </div>
                 </div>,
                 <div key="p1" className="w-full h-full bg-[#EAE8E3] relative flex items-center justify-center">
-                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none mix-blend-multiply" />
+                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none" />
                   <span className="font-serif text-black/10 text-5xl italic font-light">JM</span>
                 </div>,
                 <div key="p2" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left"><div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                   <div className="relative z-10">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block">01 / J.K. Rowling</span>
-                    <h5 className="font-serif text-sm text-white mb-1 leading-tight">Harry Potter<br/>& The Order of the Phoenix</h5>
+                    <h5 className="font-serif text-sm text-white mb-1 leading-tight">Harry Potter<br />& The Order of the Phoenix</h5>
                   </div>
                 </div>,
                 <div key="p3" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5"><div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Khalid Hosseini / 02</span>
-                    <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">A Thousand<br/>Splendid Suns</h5>
+                    <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">A Thousand<br />Splendid Suns</h5>
                   </div>
                 </div>,
                 <div key="p4" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left"><div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -350,7 +357,7 @@ export default function Home() {
                 <div key="p5" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5"><div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Marjan Kamali / 04</span>
-                    <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">The Stationery Shop<br/>of Tehran</h5>
+                    <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">The Stationery Shop<br />of Tehran</h5>
                   </div>
                 </div>,
                 <div key="p6" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-end p-4 text-left"><div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -362,27 +369,27 @@ export default function Home() {
                 <div key="p7" className="w-full h-full bg-[#1A1A1A] relative overflow-hidden flex flex-col justify-start p-4 text-left shadow-[-10px_0_20px_rgba(0,0,0,0.5)] border-l border-white/5"><div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
                   <div className="relative z-10 mt-2">
                     <span className="font-mono text-[8px] uppercase tracking-widest text-white/60 mb-2 block text-right">Rick Riordan / 06</span>
-                    <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">Percy Jackson &<br/>The Titan's Curse</h5>
+                    <h5 className="font-serif text-sm text-white mb-1 leading-tight text-right">Percy Jackson &<br />The Titan's Curse</h5>
                   </div>
                 </div>,
                 <div key="p8" className="w-full h-full bg-[#EAE8E3] relative flex flex-col justify-center items-center text-center p-6 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] border-l border-black/5">
-                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none mix-blend-multiply" />
+                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none" />
                   <div className="w-4 h-[1px] bg-black/20 mb-4" />
                   <h5 className="font-serif text-[11px] text-black/80 leading-relaxed italic relative z-10">
-                    "All of it ends up in my campaigns somehow."
+                    "It all finds its way into my work."
                   </h5>
                   <div className="w-4 h-[1px] bg-black/20 mt-4" />
                 </div>,
                 <div key="p9" className="w-full h-full bg-[#EAE8E3] relative">
-                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none mix-blend-multiply" />
+                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none" />
                 </div>,
                 <div key="inside-back" className="w-full h-full bg-[#EAE8E3] relative shadow-[-10px_0_20px_rgba(0,0,0,0.05)] border-l border-black/5">
-                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none mix-blend-multiply" />
+                  <div className="absolute inset-0 opacity-10 bg-[url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png')] pointer-events-none" />
                 </div>,
                 <div key="outside-back" className="w-full h-full bg-[#111] p-6 flex flex-col items-center justify-center relative overflow-hidden"><div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
-                   <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center relative z-10 bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                     <span className="font-serif text-white/50 text-[10px]">JM</span>
-                   </div>
+                  <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center relative z-10 bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                    <span className="font-serif text-white/50 text-[10px]">JM</span>
+                  </div>
                 </div>
               ]} />
             </div>
@@ -398,10 +405,10 @@ export default function Home() {
       {/* Beliefs & Contact */}
       <section id="contact" className="relative z-10 mx-auto max-w-7xl px-4 py-16 md:py-24 md:px-12 lg:px-24">
         <div className="grid md:grid-cols-2 gap-24">
-          
+
           <div>
             <FadeUp>
-              <h2 className="font-serif text-5xl mb-12 pb-2">What I Believe.</h2>
+              <h2 className="font-serif text-5xl mb-12 pb-2">My Playbook</h2>
             </FadeUp>
             <ExpandableDrawers />
           </div>
@@ -411,13 +418,13 @@ export default function Home() {
               <DoubleBezel innerClassName="text-center py-24">
                 <div className="relative flex justify-center mb-16 sm:mb-10 w-fit mx-auto">
                   <FortuneCookie />
-                  
+
                   {/* Desktop Arrow (Right) */}
                   <div className="absolute -right-4 top-1/2 transform translate-x-full -translate-y-[30%] flex-col items-start gap-1 pointer-events-none opacity-60 hidden sm:flex">
                     <svg width="45" height="35" viewBox="0 0 100 80" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-white drop-shadow-md">
-                       <path d="M 90 10 Q 50 60, 15 60" />
-                       <path d="M 15 60 L 35 45" />
-                       <path d="M 15 60 L 30 75" />
+                      <path d="M 90 10 Q 50 60, 15 60" />
+                      <path d="M 15 60 L 35 45" />
+                      <path d="M 15 60 L 30 75" />
                     </svg>
                     <span className="font-serif italic text-sm text-white ml-6 -mt-2 whitespace-nowrap">Tap to open</span>
                   </div>
@@ -426,14 +433,14 @@ export default function Home() {
                   <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 pointer-events-none opacity-60 sm:hidden">
                     <span className="font-serif italic text-sm text-white whitespace-nowrap mb-1">Tap to open</span>
                     <svg width="25" height="30" viewBox="0 0 40 80" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-white drop-shadow-md">
-                       <path d="M 20 80 Q 35 40, 20 10" />
-                       <path d="M 20 10 L 10 25" />
-                       <path d="M 20 10 L 30 20" />
+                      <path d="M 20 80 Q 35 40, 20 10" />
+                      <path d="M 20 10 L 10 25" />
+                      <path d="M 20 10 L 30 20" />
                     </svg>
                   </div>
                 </div>
-                
-                <h2 className="font-serif text-4xl md:text-6xl mb-8 text-balance leading-tight">
+
+                <h2 className="font-serif text-3xl md:text-5xl mb-8 text-balance leading-tight">
                   Let's connect and build impactful partnerships.
                 </h2>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -449,7 +456,7 @@ export default function Home() {
               </DoubleBezel>
             </FadeUp>
           </div>
-          
+
         </div>
       </section>
 

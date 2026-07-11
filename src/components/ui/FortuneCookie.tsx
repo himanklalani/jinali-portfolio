@@ -65,8 +65,8 @@ export function FortuneCookie() {
           >
             <div className="absolute top-[56%] left-[50%] -translate-x-1/2 -translate-y-1/2 rotate-[-6deg]">
               <div className="font-mono text-black/90 text-[10px] uppercase tracking-[0.2em] mix-blend-multiply opacity-100 font-bold text-center flex flex-col gap-0.5">
-                <span>You're meant</span>
-                <span>to be here</span>
+                  <span>Made it this far?</span>
+                  <span>Let's talk!</span>
               </div>
             </div>
           </motion.div>
