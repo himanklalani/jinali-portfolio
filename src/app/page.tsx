@@ -17,6 +17,7 @@ import { TvShowCard } from "@/components/ui/TvShowCard";
 import { InteractiveBook } from "@/components/ui/InteractiveBook";
 import { MusicCarousel } from "@/components/ui/MusicCarousel";
 import { FortuneCookie } from "@/components/ui/FortuneCookie";
+import { DocumentCard } from "@/components/ui/DocumentCard";
 import { Preloader } from "@/components/ui/Preloader";
 import { BrandMarquee } from "@/components/ui/BrandMarquee";
 import { ExpandableDrawers } from "@/components/ui/ExpandableDrawers";
@@ -440,18 +441,11 @@ Music is a big part of how I see the world. My playlists are always changing, an
                   </div>
                 </div>
 
-                <h2 className="font-serif text-3xl md:text-5xl mb-8 text-balance leading-tight">
+                <h2 className="font-serif text-2xl md:text-4xl mb-8 text-balance leading-tight">
                   Let's connect and build impactful partnerships.
                 </h2>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <a href="mailto:jinalimehta2301@gmail.com">
-                    <MagneticButton>jinalimehta2301@gmail.com</MagneticButton>
-                  </a>
-                  <a href="https://www.linkedin.com/in/jinalimehta/" target="_blank" rel="noopener noreferrer">
-                    <MagneticButton withArrow={false} className="!bg-[#0A66C2] border-none text-white hover:!bg-[#004182]">
-                      LinkedIn
-                    </MagneticButton>
-                  </a>
+                <div className="w-full flex justify-center mt-8">
+                  <DocumentCard />
                 </div>
               </DoubleBezel>
             </FadeUp>
