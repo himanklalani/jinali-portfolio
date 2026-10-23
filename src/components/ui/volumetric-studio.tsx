@@ -372,7 +372,7 @@ export const VolumetricStudio = ({
   const effectiveSpots = isMobile && spots.length === 2 ? [34, 66] : spots;
 
   return (
-    <section className={cn("relative w-full h-[100dvh] bg-black overflow-hidden font-sans", className)}>
+    <section className={cn("relative w-full h-[100svh] md:h-[100dvh] bg-black overflow-hidden font-sans", className)}>
       <Room
         lightsOn={lightsOn}
         intensity={1}

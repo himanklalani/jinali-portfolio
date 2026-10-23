@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 
 if (typeof window !== 'undefined') {
+  ScrollTrigger.config({ ignoreMobileResize: true })
   gsap.registerPlugin(ScrollTrigger, useGSAP)
 }
 

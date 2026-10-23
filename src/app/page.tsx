@@ -46,7 +46,7 @@ export default function Home() {
   const logoY = useTransform(scrollYProgress, [0, 1], [0, travelDistance]);
 
   return (
-    <main className="relative min-h-[100dvh] w-full overflow-hidden bg-[#050505]">
+    <main className="relative min-h-[100svh] md:min-h-[100dvh] w-full overflow-x-hidden bg-[#050505]">
       {!isLoaded && <Preloader onComplete={() => setIsLoaded(true)} />}
       {/* Global Noise Overlay */}
       <div className="noise-overlay" />
@@ -83,7 +83,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <VolumetricStudio className="!min-h-[100dvh]" spots={[28, 72]} fixtureSpots={[25, 75]} isReady={isLoaded}>
+      <VolumetricStudio className="!min-h-[100svh] md:!min-h-[100dvh]" spots={[28, 72]} fixtureSpots={[25, 75]} isReady={isLoaded}>
         <div className="relative z-10 flex h-full flex-col px-4 md:px-12 lg:px-24 pointer-events-none pt-[35vh] md:pt-[25vh] lg:pt-[30vh]">
           <div className="mx-auto max-w-7xl w-full">
             <FadeUp isReady={isLoaded}>
